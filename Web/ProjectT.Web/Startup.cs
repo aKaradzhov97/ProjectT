@@ -37,17 +37,8 @@ namespace ProjectT
                 options => options.UseSqlServer(this.configuration
                     .GetConnectionString("DefaultConnection")));
 
-            services
-                .AddIdentity<ApplicationUser, ApplicationRole>(options =>
-                {
-                    options.Password.RequiredLength = 6;
-                    options.Password.RequireDigit = false;
-                    options.Password.RequireLowercase = false;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequireUppercase = false;
-                })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
+                .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
             // Expire default Cookie time
             services.ConfigureApplicationCookie(x => { x.ExpireTimeSpan = TimeSpan.FromDays(1); });
@@ -57,7 +48,7 @@ namespace ProjectT
             services.AddSingleton(this.configuration);
 
             // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            services.AddSpaStaticFiles(options => { options.RootPath = "ClientApp/dist"; });
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
@@ -85,6 +76,7 @@ namespace ProjectT
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {

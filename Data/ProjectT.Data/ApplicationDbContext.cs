@@ -5,10 +5,11 @@
     using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
-    using ProjectT.Data.Common.Models;
-    using ProjectT.Data.Models;
+
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using ProjectT.Data.Common.Models;
+    using ProjectT.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
