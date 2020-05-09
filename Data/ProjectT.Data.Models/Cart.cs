@@ -27,7 +27,5 @@
         public string StoreId { get; set; }
 
         public virtual Store Store { get; set; }
-
-        public DateTime Created_On { get; set; }
     }
 }
