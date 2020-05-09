@@ -1,25 +1,25 @@
-using System;
-using System.Reflection;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using ProjectT.Data;
-using ProjectT.Data.Common;
-using ProjectT.Data.Common.Repositories;
-using ProjectT.Data.Models;
-using ProjectT.Data.Repositories;
-using ProjectT.Data.Seeding;
-using ProjectT.Services.Mapping;
-using ProjectT.Web.ViewModels;
-
 namespace ProjectT
 {
+    using System;
+    using System.Reflection;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpsPolicy;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.SpaServices.AngularCli;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using ProjectT.Data;
+    using ProjectT.Data.Common;
+    using ProjectT.Data.Common.Repositories;
+    using ProjectT.Data.Models;
+    using ProjectT.Data.Repositories;
+    using ProjectT.Data.Seeding;
+    using ProjectT.Services.Mapping;
+    using ProjectT.Web.ViewModels;
 
     public class Startup
     {
@@ -77,7 +77,6 @@ namespace ProjectT
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                dbContext.Database.Migrate();
 
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
