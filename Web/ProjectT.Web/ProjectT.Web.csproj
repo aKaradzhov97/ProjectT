@@ -53,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app" />
     <Folder Include="Controllers" />
   </ItemGroup>
 </Project>

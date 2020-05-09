@@ -1,0 +1,31 @@
+<section class="container">
+  <h5>Update product:</h5>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <mat-form-field class="form-label">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Ex. Nike Ace.." type="text">
+    </mat-form-field>
+
+    <mat-form-field class="form-label">
+      <mat-label>Image URL</mat-label>
+      <input formControlName="image" matInput placeholder="Ex. https://img..." type="url">
+    </mat-form-field>
+
+    <mat-form-field class="form-label">
+      <mat-label>Description</mat-label>
+      <input formControlName="description" matInput placeholder="Ex. Cool trainers..." type="text">
+    </mat-form-field>
+
+    <mat-form-field class="form-label">
+      <mat-label>Quantity</mat-label>
+      <input formControlName="quantity" matInput placeholder="Ex. 100..." type="number">
+    </mat-form-field>
+
+    <mat-form-field class="form-label">
+      <mat-label>Price</mat-label>
+      <input formControlName="price" matInput placeholder="Ex. 120 $..." type="number">
+    </mat-form-field>
+
+    <button [disabled]="!form.valid" mat-raised-button type="submit">Save changes!</button>
+  </form>
+</section>

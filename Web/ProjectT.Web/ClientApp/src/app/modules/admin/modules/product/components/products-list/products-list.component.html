@@ -1,0 +1,14 @@
+<div class="container">
+  <article *ngFor="let product of products" class="d-flex justify-content-between">
+    <section>{{product.name}}</section>
+    <section>{{product.quantity}}</section>
+    <section>{{product.price}}</section>
+    <section>
+      <a routerLink="/admin/product/update/{{product.id}}">Update</a>
+    </section>
+    <section>
+      <a routerLink="/admin/product/delete/{{product.id}}">Delete</a>
+    </section>
+  </article>
+</div>
+

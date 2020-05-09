@@ -67,7 +67,7 @@
             services.AddSingleton<IConfiguration>(configuration);
 
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseMySql(configuration.GetConnectionString("DefaultConnection"))
+                options => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
                     .UseLoggerFactory(new LoggerFactory()));
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)

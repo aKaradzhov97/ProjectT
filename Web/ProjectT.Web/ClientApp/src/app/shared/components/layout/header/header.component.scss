@@ -1,0 +1,54 @@
+@import "./src/styles";
+
+/* FOR STICKY HEADER */
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  .wrapper {
+    max-width: none;
+    width: 100%;
+  }
+
+  .site-branding {
+    padding: 0.5rem;
+
+    a {
+      color: #FFF;
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 15px;
+    }
+  }
+
+  .nav-main.center {
+    flex: 1;
+  }
+
+  ul {
+    a {
+      color: #FFF;
+      margin: 0 0.75rem;
+      transition: 0.15s;
+      position: relative;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+
+  #toggle {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    color: #FFF;
+    cursor: pointer;
+  }
+
+  @include media-breakpoint-sm-down {
+    ul > li > a {
+      display: none;
+    }
+  }
+}

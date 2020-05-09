@@ -1,0 +1,12 @@
+<mat-nav-list>
+  <a mat-list-item routerLink="/" (click)="onSidenavClose()">
+    <mat-icon>home</mat-icon>
+    <span class="nav-caption">Home</span>
+  </a>
+  <ng-container *ngFor="let category of categories">
+    <a mat-list-item routerLink="/{{category.name.toLowerCase()}}" (click)="onSidenavClose()">
+      <mat-icon>home</mat-icon>
+      <span class="nav-caption">{{category.name}}</span>
+    </a>
+  </ng-container>
+</mat-nav-list>

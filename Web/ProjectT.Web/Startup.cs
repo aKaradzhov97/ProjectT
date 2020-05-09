@@ -34,7 +34,7 @@ namespace ProjectT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseMySql(this.configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseNpgsql(this.configuration.GetConnectionString("DefaultConnection")));
 
             services
                 .AddIdentity<ApplicationUser, ApplicationRole>(options =>
