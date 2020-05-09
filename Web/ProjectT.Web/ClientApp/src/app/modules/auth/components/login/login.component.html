@@ -1,6 +1,6 @@
 <section class="container">
   <h5>Login:</h5>
-  <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="form-label">
       <mat-label>Username</mat-label>
       <input type="text" matInput placeholder="Your username.." formControlName="username">

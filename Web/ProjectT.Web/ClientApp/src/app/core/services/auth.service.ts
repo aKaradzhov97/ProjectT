@@ -4,56 +4,36 @@ import {Injectable} from '@angular/core';
 // RXJS
 import {Subject} from 'rxjs';
 
-
-// Decoder
-import decode from 'jwt-decode';
+// Models
+import {User} from '../../shared/models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   isUserLogged = new Subject<boolean>();
-  searchQuery = new Subject<string>();
+  private user: User = null;
 
-  saveSession(token): void {
-    localStorage.setItem('token', token);
+  saveSession(user): void {
+    console.log(user);
+    this.user = user;
   }
 
   clearSession(): void {
-    localStorage.clear();
+    this.user = null;
   }
 
   getProfile(): any {
-    try {
-      const decoded = decode(this.getToken());
-
-      return decoded.sub;
-    } catch (err) {
-      return {};
-    }
+    return {
+      username: 'HARDCODED',
+    };
   }
 
   isLoggedIn(): boolean {
-    try {
-      const decoded = decode(this.getToken());
-
-      return decoded.exp > Date.now() / 1000;
-    } catch (err) {
-      return false;
-    }
+    return true;
   }
 
   isAdmin(): boolean {
-    try {
-      const decoded = decode(this.getToken());
-
-      return !(decoded.exp < Date.now() / 1000 || !decoded.sub.isAdmin);
-    } catch (err) {
-      return false;
-    }
-  }
-
-  getToken(): string {
-    return localStorage.getItem('token');
+    return false
   }
 }

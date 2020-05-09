@@ -12,6 +12,7 @@ import {AuthService} from '../../../../core/services/auth.service';
 export class HeaderComponent {
   @Output() public sidenavToggle = new EventEmitter();
   @Input() categories: any[] = [];
+  isAuthenticated: boolean = this.authService.isLoggedIn();
   isSearchInputMaterial = false;
 
   constructor(private authService: AuthService) {

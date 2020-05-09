@@ -16,7 +16,7 @@ import {
 import {AuthService} from '../services/auth.service';
 
 @Injectable()
-export class JwtInterceptor implements HttpInterceptor {
+export class HTTPInterceptor implements HttpInterceptor {
 
   constructor(private authService: AuthService) {
   }
@@ -27,7 +27,6 @@ export class JwtInterceptor implements HttpInterceptor {
         setHeaders: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + this.authService.getToken(),
         }
       });
     }

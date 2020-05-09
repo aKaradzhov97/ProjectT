@@ -1,10 +1,8 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
-  <app-input [errorMsg]="'Please provide category name!'"
-             [isRequired]="true"
-             [label]="'Name'"
-             [pattern]="'[A-Za-z0-9._%-\s*]+'"
-             [placeholder]="'Ex. Kids...'"
-             name="email" ngModel></app-input>
+  <mat-form-field class="form-label">
+    <mat-label>Category</mat-label>
+    <input type="text" matInput placeholder="Ex. Mens..." formControlName="name">
+  </mat-form-field>
 
   <button [disabled]="!f.valid" color="primary" mat-raised-button type="submit">Create!</button>
 </form>
