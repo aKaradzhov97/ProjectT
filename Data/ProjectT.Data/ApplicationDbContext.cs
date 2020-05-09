@@ -5,10 +5,8 @@
     using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
-
     using ProjectT.Data.Common.Models;
     using ProjectT.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +21,18 @@
             : base(options)
         {
         }
+
+        public DbSet<Cart> Carts { get; set; }
+
+        public DbSet<Inventory> Inventories { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderItem> OrderItems { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<Store> Stores { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -60,7 +70,7 @@
             foreach (var deletableEntityType in deletableEntityTypes)
             {
                 var method = SetIsDeletedQueryFilterMethod.MakeGenericMethod(deletableEntityType.ClrType);
-                method.Invoke(null, new object[] { builder });
+                method.Invoke(null, new object[] {builder});
             }
 
             // Disable cascade delete
@@ -70,6 +80,14 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            // Fluent Api Inventory settings
+            builder.Entity<Inventory>()
+                .HasKey(x => new
+                {
+                    x.ProductId,
+                    x.StoreId,
+                });
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
@@ -80,7 +98,7 @@
 
         // Applies configurations
         private void ConfigureUserIdentityRelations(ModelBuilder builder)
-             => builder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+            => builder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
 
         private void ApplyAuditInfoRules()
         {
@@ -92,7 +110,7 @@
 
             foreach (var entry in changedEntries)
             {
-                var entity = (IAuditInfo)entry.Entity;
+                var entity = (IAuditInfo) entry.Entity;
                 if (entry.State == EntityState.Added && entity.CreatedOn == default)
                 {
                     entity.CreatedOn = DateTime.UtcNow;

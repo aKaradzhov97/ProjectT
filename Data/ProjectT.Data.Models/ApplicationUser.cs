@@ -16,6 +16,9 @@ namespace ProjectT.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Carts = new HashSet<Cart>();
+            this.Orders = new HashSet<Order>();
+            this.OrderItems = new HashSet<OrderItem>();
         }
 
         // Audit info
@@ -33,5 +36,11 @@ namespace ProjectT.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+        
+        public virtual ICollection<Cart> Carts { get; set; }
+
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
