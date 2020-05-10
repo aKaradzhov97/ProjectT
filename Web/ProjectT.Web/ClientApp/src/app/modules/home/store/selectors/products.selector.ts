@@ -19,6 +19,17 @@ export const getProductsEntities = createSelector(
   fromProducts.getProductsEntities
 );
 
+export const getTrendingProductsEntities = createSelector(
+  getProductState,
+  fromProducts.getTrendingProductsEntities
+);
+
+export const getNewestProductsEntities = createSelector(
+  getProductState,
+  fromProducts.getNewestProductsEntities
+);
+
+
 export const getSelectedProduct = createSelector(
   getProductsEntities,
   fromRoot.getRouterState,
@@ -28,6 +39,14 @@ export const getSelectedProduct = createSelector(
 );
 
 export const getAllProducts = createSelector(getProductsEntities, entities => {
+  return Object.keys(entities).map(id => entities[id]);
+});
+
+export const getTrendingProducts = createSelector(getTrendingProductsEntities, entities => {
+  return Object.keys(entities).map(id => entities[id]);
+});
+
+export const getNewestProducts = createSelector(getNewestProductsEntities, entities => {
   return Object.keys(entities).map(id => entities[id]);
 });
 

@@ -2,7 +2,7 @@ import {Action} from '@ngrx/store';
 
 import {Product} from '../../../../shared/models/product.model';
 
-// Load products
+// LOAD PRODUCTS
 export const LOAD_PRODUCTS = '[Products] Load Products';
 export const LOAD_PRODUCTS_FAIL = '[Products] Load Products Fail';
 export const LOAD_PRODUCTS_SUCCESS = '[Products] Load Products Success';
@@ -20,6 +20,31 @@ export class LoadProductsFail implements Action {
 
 export class LoadProductsSuccess implements Action {
   readonly type = LOAD_PRODUCTS_SUCCESS;
+
+  constructor(public payload: any) {
+  }
+}
+
+
+// LOAD PRODUCTS HOME
+
+export const LOAD_PRODUCTS_HOME = '[Products] Load Products Home';
+export const LOAD_PRODUCTS_HOME_FAIL = '[Products] Load Products Home Fail';
+export const LOAD_PRODUCTS_HOME_SUCCESS = '[Products] Load Products Home Success';
+
+export class LoadProductsHome implements Action {
+  readonly type = LOAD_PRODUCTS_HOME;
+}
+
+export class LoadProductsHomeFail implements Action {
+  readonly type = LOAD_PRODUCTS_HOME_FAIL;
+
+  constructor(public payload: any) {
+  }
+}
+
+export class LoadProductsHomeSuccess implements Action {
+  readonly type = LOAD_PRODUCTS_HOME_SUCCESS;
 
   constructor(public payload: any) {
   }
@@ -112,6 +137,9 @@ export type ProductsAction =
   | LoadProducts
   | LoadProductsFail
   | LoadProductsSuccess
+  | LoadProductsHome
+  | LoadProductsHomeFail
+  | LoadProductsHomeSuccess
   | CreateProduct
   | CreateProductFail
   | CreateProductSuccess

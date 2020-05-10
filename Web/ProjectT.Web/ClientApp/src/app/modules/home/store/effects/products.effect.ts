@@ -30,6 +30,19 @@ export class ProductsEffect {
   );
 
   @Effect()
+  loadProductsHome$ = this.actions$.pipe(
+    ofType(productActions.LOAD_PRODUCTS_HOME),
+    switchMap(() => {
+      return this.productService
+        .getHomeProducts()
+        .pipe(
+          map(products => new productActions.LoadProductsSuccess(products)),
+          catchError(error => of(new productActions.LoadProductsFail(error)))
+        );
+    })
+  );
+
+  @Effect()
   createProduct$ = this.actions$.pipe(
     ofType(productActions.CREATE_PRODUCT),
     map((action: productActions.CreateProduct) => action.payload),
@@ -37,9 +50,6 @@ export class ProductsEffect {
       return this.productService
         .createProduct(product)
         .pipe(
-          // Using the other line to avoid creating 2 entities (one of them broken) because of the
-          // server response type!
-          // map((product: Product) => new productActions.CreateProductSuccess(product)),
           map((response: any) => new productActions.CreateProductSuccess(response.data)),
           catchError((error: any) => of(new productActions.CreateProductFail(error)))
         );

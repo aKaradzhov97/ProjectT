@@ -16,6 +16,7 @@ import { API_CONSTANTS } from '../../shared/constants';
 
 const BASE_URL = API_CONSTANTS.BASE_URL + API_CONSTANTS.PRODUCT_ENDPOINT;
 const GET_ALL_URL = `${BASE_URL}/all`;
+const GET_HOME_URL = `${BASE_URL}/home`;
 // Just append ID after:
 const GET_ONE_URL = `${BASE_URL}/`;
 const CREATE_ONE_URL = `${BASE_URL}/create/`;
@@ -30,6 +31,12 @@ export class ProductService {
   getProducts(): Observable<Product[]> {
     return this.http
       .get<Product[]>(GET_ALL_URL)
+      .pipe(catchError((error: any) => Observable.throw(error.json())));
+  }
+
+  getHomeProducts(): Observable<Product[]> {
+    return this.http
+      .get<Product[]>(GET_HOME_URL)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 

@@ -1,3 +1,6 @@
 <section class="wrapper">
-  <app-products [products]="products$ | async"></app-products>
+  <h3>Trending products</h3>
+  <app-products [products]="trendingProducts$ | async"></app-products>
+  <h3>Newest products</h3>
+  <app-products [products]="newestProducts$ | async"></app-products>
 </section>
