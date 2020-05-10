@@ -24,16 +24,14 @@ export class AuthService {
   }
 
   getProfile(): any {
-    return {
-      username: 'HARDCODED',
-    };
+    return this.user;
   }
 
   isLoggedIn(): boolean {
-    return true;
+    return !!this.user;
   }
 
   isAdmin(): boolean {
-    return false
+    return this.user ? this.user.isAdmin : false;
   }
 }

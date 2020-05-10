@@ -22,14 +22,12 @@ export class HTTPInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (this.authService.isLoggedIn()) {
-      request = request.clone({
-        setHeaders: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }
-      });
-    }
+    request = request.clone({
+      setHeaders: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
 
     return next.handle(request);
   }
