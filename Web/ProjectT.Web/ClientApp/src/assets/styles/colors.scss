@@ -5,8 +5,26 @@ $indigo: #3f51b5; // Purple
 $accent: #ff4081; // Pink
 
 // GRAYSCALE
+$gray-bg: #fafafa;
+$gray-dark: #333;
+$gray-medium-dark: #555;
+$gray-medium-normal: #777;
+$gray-medium-light: #999;
+$gray-light: #bbb;
 
-$bg-white: $white;
-$bg-black: $black;
-$bg-primary: $indigo;
-$bg-accent: $accent;
+// BACKGROUNDS
+$bg-white: $white !important;
+$bg-black: $black !important;
+$bg-primary: $indigo !important;
+$bg-accent: $accent !important;
+$bg-gray: $gray-bg !important;
+
+
+// TEXT
+$text-white: $white !important;
+$text-black: $black !important;
+$text-primary: $indigo !important;
+$text-accent: $accent !important;
+$text-dark: $gray-dark !important;
+$text-medium: $gray-medium-dark !important;
+$text-light: $gray-medium-light !important;

@@ -1,7 +1,7 @@
 @import "./responsive";
 
 html {
-  font: 10px/1.5 "Montserrat", sans-serif;
+  font: 12px/1.5 "Montserrat", sans-serif;
   scroll-behavior: smooth;
   font-weight: lighter;
 }
@@ -11,12 +11,13 @@ body, form, table {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   cursor: pointer;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", sans-serif;
+  font-weight: normal;
   line-height: 1.2;
   margin: 0.75rem 0 0.5rem 0;
   padding: 0;
@@ -74,12 +75,6 @@ hr {
 /* RESPONSIVE */
 @include media-breakpoint-sm-up {
   html {
-    font-size: 12px;
-  }
-}
-
-@include media-breakpoint-md-up {
-  html {
     font-size: 14px;
   }
 }
@@ -90,14 +85,8 @@ hr {
   }
 }
 
-@include media-breakpoint-xl-up {
-  html {
-    font-size: 18px;
-  }
-}
-
 @include media-breakpoint-xxl-up {
   html {
-    font-size: 21px;
+    font-size: 18px;
   }
 }

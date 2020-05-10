@@ -1,6 +1,6 @@
 body {
   .wrapper {
-    max-width: 60rem;
+    max-width: 80rem;
     margin: 0 auto;
   }
 
@@ -9,11 +9,8 @@ body {
     justify-content: center;
   }
 
-  .container {
+  .t-container {
     display: block;
-    background: #FFF;
-    border: 1px solid #E6E6E6;
-    border-radius: 3px;
-    padding: 1rem;
+    padding: 0.5rem 1.5rem;
   }
 }

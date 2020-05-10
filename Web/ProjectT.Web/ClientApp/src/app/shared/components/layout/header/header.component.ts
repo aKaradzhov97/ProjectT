@@ -1,28 +1,42 @@
 // Decorators and Lifehooks
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+
+// Forms
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 // Services
 import {AuthService} from '../../../../core/services/auth.service';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-  @Output() public sidenavToggle = new EventEmitter();
+export class HeaderComponent implements OnInit {
   @Input() categories: any[] = [];
+
+  @Output() public sidenavToggle = new EventEmitter();
+  @Output() formSubmit = new EventEmitter();
+
+  form: FormGroup;
+
   isAuthenticated: boolean = this.authService.isLoggedIn();
-  isSearchInputMaterial = false;
 
   constructor(private authService: AuthService) {
+  }
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      search: new FormControl('', Validators.required),
+    });
   }
 
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
   }
 
-  onSubmit(f) {
-    console.log(f);
+  onSubmit(): void {
+    this.formSubmit.emit(this.form.value);
   }
 }
