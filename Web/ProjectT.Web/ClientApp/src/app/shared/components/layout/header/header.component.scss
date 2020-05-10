@@ -12,13 +12,9 @@
   }
 
   .site-branding {
-    padding: 0.5rem;
-
     a {
-      color: #FFF;
       font-size: 1.6rem;
-      font-weight: 300;
-      letter-spacing: 15px;
+      letter-spacing: 0.25rem;
     }
   }
 
@@ -28,27 +24,34 @@
 
   ul {
     a {
-      color: #FFF;
       margin: 0 0.75rem;
       transition: 0.15s;
-      position: relative;
       display: inline-block;
       text-align: center;
     }
   }
 
-  #toggle {
+  button {
     background: transparent;
     border: none;
     outline: none;
-    padding: 0.5rem;
-    color: #FFF;
+    padding: 0.5rem 0;
     cursor: pointer;
+
+    &:not(:last-of-type) {
+      margin-right: 0.5rem;
+    }
   }
 
   @include media-breakpoint-sm-down {
     ul > li > a {
       display: none;
     }
+  }
+
+  .categories {
+    -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.6);
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.6);
   }
 }
