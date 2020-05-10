@@ -7,5 +7,7 @@
         Task<bool> UsernameExists(string username);
 
         Task<bool> EmailExists(string email);
+
+        Task<UsersServices.User> GetInfo(string username);
     }
 }

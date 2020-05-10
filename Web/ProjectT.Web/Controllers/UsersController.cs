@@ -46,7 +46,9 @@
 
             var user = await this.userManager.FindByNameAsync(login.Username);
 
-            return this.Ok(new {Message = "Login successful", });
+            var data = await this.usersService.GetInfo(user.UserName);
+
+            return this.Ok(new {Message = "Login successful", data});
         }
 
         [Route("register")]

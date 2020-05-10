@@ -1,8 +1,9 @@
-﻿namespace ProjectT.Services.Data.UserServices
+﻿using ProjectT.Common;
+
+namespace ProjectT.Services.Data.UserServices
 {
     using System.Linq;
     using System.Threading.Tasks;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using ProjectT.Data.Common.Repositories;
@@ -12,15 +13,18 @@
     {
         private readonly IRepository<ApplicationUser> repositoryUser;
         private readonly IRepository<IdentityUserRole<string>> repositoryUserRole;
+        private readonly IRepository<ApplicationRole> repositoryRole;
         private readonly UserManager<ApplicationUser> userManager;
 
         public UsersServices(
             IRepository<ApplicationUser> repositoryUser,
             IRepository<IdentityUserRole<string>> repositoryUserRole,
+            IRepository<ApplicationRole> repositoryRole,
             UserManager<ApplicationUser> userManager)
         {
             this.repositoryUser = repositoryUser;
             this.repositoryUserRole = repositoryUserRole;
+            this.repositoryRole = repositoryRole;
             this.userManager = userManager;
         }
 
@@ -38,13 +42,25 @@
         {
             var currentUser = await this.repositoryUser.All()
                 .FirstOrDefaultAsync(x => x.UserName == username);
+            var userRoleId = await this.repositoryUserRole.All()
+                .FirstOrDefaultAsync(x => x.UserId == currentUser.Id);
+            var role = await this.repositoryRole.All().FirstOrDefaultAsync(x => x.Id == userRoleId.RoleId);
+
             var info = new User
             {
                 Username = currentUser.UserName,
                 Email = currentUser.Email,
                 Phone = currentUser.PhoneNumber,
-               // IsAdmin = await this.repositoryUserRole.All().FirstOrDefaultAsync();
             };
+
+            if (role.Name == GlobalConstants.AdministratorRoleName)
+            {
+                info.IsAdmin = true;
+            }
+            else
+            {
+                info.IsAdmin = false;
+            }
 
             return info;
         }
