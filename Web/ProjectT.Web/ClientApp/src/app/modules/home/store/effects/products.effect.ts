@@ -36,8 +36,8 @@ export class ProductsEffect {
       return this.productService
         .getHomeProducts()
         .pipe(
-          map(products => new productActions.LoadProductsSuccess(products)),
-          catchError(error => of(new productActions.LoadProductsFail(error)))
+          map(products => new productActions.LoadProductsHomeSuccess(products)),
+          catchError(error => of(new productActions.LoadProductsHomeFail(error)))
         );
     })
   );
