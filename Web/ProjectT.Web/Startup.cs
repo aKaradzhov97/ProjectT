@@ -1,3 +1,5 @@
+using ProjectT.Services.Data.ProductServices;
+
 namespace ProjectT
 {
     using System;
@@ -62,6 +64,7 @@ namespace ProjectT
             // Add Service
             services.AddTransient<IHomeServices, HomeServices>();
             services.AddTransient<IUsersServices, UsersServices>();
+            services.AddTransient<IProductsServices, ProductsServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

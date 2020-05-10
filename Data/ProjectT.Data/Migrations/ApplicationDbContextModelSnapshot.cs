@@ -271,6 +271,25 @@ namespace ProjectT.Data.Migrations
                     b.ToTable("Carts");
                 });
 
+            modelBuilder.Entity("ProjectT.Data.Models.Image", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("ProjectT.Data.Models.Inventory", b =>
                 {
                     b.Property<string>("ProductId")
@@ -492,6 +511,13 @@ namespace ProjectT.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ProjectT.Data.Models.Image", b =>
+                {
+                    b.HasOne("ProjectT.Data.Models.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("ProjectT.Data.Models.Inventory", b =>
