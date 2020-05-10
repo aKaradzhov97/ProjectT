@@ -1,4 +1,4 @@
-﻿namespace ProjectT.Controllers
+﻿namespace ProjectT.Web.Controllers
 {
     using System.Threading.Tasks;
 

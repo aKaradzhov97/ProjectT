@@ -1,3 +1,6 @@
+using ProjectT.Services.Data.HomeServices;
+using ProjectT.Services.Data.UserServices;
+
 namespace ProjectT
 {
     using System;
@@ -56,6 +59,8 @@ namespace ProjectT
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Add Service
+            services.AddTransient<IHomeServices, HomeServices>();
+            services.AddTransient<IUsersServices, UsersServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
