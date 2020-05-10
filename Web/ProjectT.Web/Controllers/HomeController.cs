@@ -1,7 +1,9 @@
-﻿namespace ProjectT.Web.Controllers
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace ProjectT.Web.Controllers
 {
     using System.Threading.Tasks;
-
     using Microsoft.AspNetCore.Mvc;
     using ProjectT.Services.Data.HomeServices;
 
@@ -22,7 +24,11 @@
             var newest = await this.homeService.Newest();
             var trending = await this.homeService.Trending();
 
-            return this.Ok(new {Message = "Success", newest, trending});
+            var data = new Dictionary<string, IEnumerable>();
+            data["newest"] = newest;
+            data["trending"] = trending;
+
+            return this.Ok(new {Message = "Success", data});
         }
     }
 }

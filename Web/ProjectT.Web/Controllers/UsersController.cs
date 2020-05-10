@@ -10,7 +10,7 @@
     using ProjectT.Web.ViewModels.Users;
 
     [ApiController]
-    [Route("api/users")]
+    [Route("api/auth")]
     public class UsersController : ControllerBase
     {
         private readonly IUsersServices usersService;
@@ -46,7 +46,7 @@
 
             var user = await this.userManager.FindByNameAsync(login.Username);
 
-            return this.Ok(new {Message = "Login successful", user});
+            return this.Ok(new {Message = "Login successful", });
         }
 
         [Route("register")]
