@@ -21,7 +21,7 @@
         {
             return await this.repositoryProduct.All()
                 .OrderByDescending(x => x.Created_On)
-                .Take(3)
+                .Take(6)
                 .ToListAsync();
         }
 
@@ -29,7 +29,7 @@
         {
             return await this.repositoryProduct.All()
                 .OrderByDescending(x => x.SellCount)
-                .Take(3)
+                .Take(6)
                 .ToListAsync();
         }
     }

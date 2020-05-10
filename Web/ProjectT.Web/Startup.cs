@@ -1,6 +1,3 @@
-using ProjectT.Services.Data.HomeServices;
-using ProjectT.Services.Data.UserServices;
-
 namespace ProjectT
 {
     using System;
@@ -8,8 +5,6 @@ namespace ProjectT
 
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.HttpsPolicy;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.SpaServices.AngularCli;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -21,6 +16,8 @@ namespace ProjectT
     using ProjectT.Data.Models;
     using ProjectT.Data.Repositories;
     using ProjectT.Data.Seeding;
+    using ProjectT.Services.Data.HomeServices;
+    using ProjectT.Services.Data.UserServices;
     using ProjectT.Services.Mapping;
     using ProjectT.Web.ViewModels;
 
@@ -44,7 +41,11 @@ namespace ProjectT
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
             // Expire default Cookie time
-            services.ConfigureApplicationCookie(x => { x.ExpireTimeSpan = TimeSpan.FromDays(1); });
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/api/auth/login";
+                options.ExpireTimeSpan = TimeSpan.FromDays(1);
+            });
 
             services.AddControllers();
 
@@ -98,6 +99,9 @@ namespace ProjectT
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

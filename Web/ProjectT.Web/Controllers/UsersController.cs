@@ -44,11 +44,11 @@
                 return this.BadRequest(new {Message = "Login failed", login});
             }
 
-            var user = await this.userManager.FindByNameAsync(login.Username);
+            var currentUser = await this.userManager.FindByNameAsync(login.Username);
 
-            var data = await this.usersService.GetInfo(user.UserName);
+            var user = await this.usersService.GetInfo(currentUser.UserName);
 
-            return this.Ok(new {Message = "Login successful", data});
+            return this.Ok(new {Message = "Login successful", user});
         }
 
         [Route("register")]

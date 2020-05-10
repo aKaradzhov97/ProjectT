@@ -63,7 +63,7 @@
                         "Womens Sexy Prashchishta New Collection (2020)",
                         "Luftfilter, Ölfilter, Zündkerzen - die Marke *Champion* gehört zu den ganz großen der Szene.",
                         "https://cdn.shopify.com/s/files/1/2424/0679/products/386377FYB_OM_B_1024x1024.jpg?v=1553278833",
-                        9.89m,
+                        119.89m,
                         20,
                         0
                     ),
@@ -73,7 +73,7 @@
                         "https://ae01.alicdn.com/kf/H465ff30618374811bdbcdd7c1f89a9d1b/EVERLAST-Spring-Summer-man-s-casual-sports-shoes-Fahion-patchwork-ventilated-man-s-casual-shoes.jpg",
                         9.89m,
                         200,
-                        150
+                        10
                     ),
                     (
                         "Mens Everlast Sweatshirt",
@@ -81,7 +81,7 @@
                         "https://images-na.ssl-images-amazon.com/images/I/61ayW7dnxrL._AC_UX679_.jpg",
                         9.89m,
                         200,
-                        150
+                        110
                     ),
                     (
                         "NoFear T-Shirt",
