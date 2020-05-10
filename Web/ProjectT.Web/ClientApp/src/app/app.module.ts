@@ -1,6 +1,10 @@
 // Decorators
 import {NgModule} from '@angular/core';
 
+// Gallery Module dependencies
+import 'hammerjs';
+import 'mousetrap';
+
 // Modules
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
@@ -12,6 +16,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import {EffectsModule} from '@ngrx/effects';
 import {MetaReducer, StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { GalleryModule } from '@ks89/angular-modal-gallery';
 
 // Store
 import {reducers, effects, CustomSerializer} from './store';
@@ -48,7 +53,8 @@ export const metaReducers: MetaReducer<any>[] = [];
     environment.production ? [] : StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    GalleryModule.forRoot(),
   ],
   providers: [
     {

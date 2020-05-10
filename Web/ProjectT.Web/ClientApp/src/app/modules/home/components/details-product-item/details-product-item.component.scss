@@ -1,0 +1,64 @@
+@import "./src/styles";
+
+app-details-product-item {
+  > .t-container {
+    display: grid;
+    grid-gap: to-rem(16px);
+    grid-template-columns: repeat(1, 1fr);
+
+    @include media-breakpoint-md-up() {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: to-rem(48px);
+    }
+  }
+
+  .nav-left,
+  .nav-right {
+    z-index: 1;
+  }
+
+  .current-figure {
+    position: relative;
+    overflow: hidden;
+    background-color: $bg-black;
+  }
+
+  .current-figure:after {
+    display: block;
+    content: '';
+    padding-top: 100%;
+  }
+
+  #current-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 100% !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .add-to-cart-btn {
+    font-size: to-rem(16px);
+  }
+
+  .mat-form-field-type-mat-select .mat-form-field-label,
+  .mat-select-value-text {
+    padding-left: to-rem(8px);
+    padding-right: to-rem(8px);
+    @include media-breakpoint-md-up() {
+      padding-left: to-rem(5px);
+      padding-right: to-rem(5px);
+    }
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0;
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: to-rem(16px);
+  }
+}

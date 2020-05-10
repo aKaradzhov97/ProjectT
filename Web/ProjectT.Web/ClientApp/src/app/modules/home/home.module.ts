@@ -11,6 +11,7 @@ import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HomeRoutingModule} from './home-routing.module';
 import {MaterialModule} from '../material/material.module';
+import {GalleryModule} from '@ks89/angular-modal-gallery';
 
 // Guards
 import * as fromGuards from './guards';
@@ -40,6 +41,7 @@ import { DetailsProductItemComponent } from './components/details-product-item/d
     ReactiveFormsModule,
     HomeRoutingModule,
     MaterialModule,
+    GalleryModule,
     StoreModule.forFeature('products', reducers),
     EffectsModule.forFeature(effects),
   ],

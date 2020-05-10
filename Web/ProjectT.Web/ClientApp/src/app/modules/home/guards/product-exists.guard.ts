@@ -38,7 +38,7 @@ export class ProductExistsGuard implements CanActivate {
       .pipe(
         tap((loaded: boolean) => {
           if (!loaded) {
-            this.store.dispatch(new fromStore.LoadProducts());
+            this.store.dispatch(new fromStore.LoadProductsHome());
           }
         }),
         filter((loaded: boolean) => loaded),

@@ -1,21 +1,21 @@
 ﻿@import './colors';
 
 .bg-white {
-  background-color: $bg-white;
+  background-color: $bg-white !important;
 }
 
 .bg-black {
-  background-color: $bg-black;
+  background-color: $bg-black !important;
 }
 
 .bg-primary {
-  background-color: $bg-primary;
+  background-color: $bg-primary !important;
 }
 
 .bg-accent {
-  background-color: $bg-accent;
+  background-color: $bg-accent !important;
 }
 
 .bg-gray {
-  background-color: $bg-gray;
+  background-color: $bg-gray !important;
 }

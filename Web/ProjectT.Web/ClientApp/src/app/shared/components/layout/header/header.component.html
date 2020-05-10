@@ -8,24 +8,22 @@
         <input type="text" placeholder="Search.." formControlName="search">
       </form>
       <article class="d-flex justify-content-between align-items-center m-0">
-        <ng-container *ngIf="!isAuthenticated">
-          <button class="d-flex justify-content-center align-items-center text-white" mat-icon-button>
-            <mat-icon>search</mat-icon>
-          </button>
-          <button class="d-flex justify-content-center align-items-center text-white" mat-icon-button>
-            <mat-icon>shopping_cart</mat-icon>
-          </button>
-          <button class="d-flex justify-content-center align-items-center text-white" mat-icon-button>
-            <mat-icon>favorite_border</mat-icon>
-          </button>
-          <button class="d-flex justify-content-center align-items-center text-white" mat-icon-button>
-            <mat-icon>person</mat-icon>
-          </button>
-          <button class="d-flex justify-content-center align-items-center text-white d-sm-none" mat-icon-button
-                  (click)="onToggleSidenav()">
-            <mat-icon>menu</mat-icon>
-          </button>
-        </ng-container>
+        <button class="d-flex justify-content-center align-items-center text-white" mat-icon-button>
+          <mat-icon>search</mat-icon>
+        </button>
+        <button class="d-flex justify-content-center align-items-center text-white" mat-icon-button>
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <button class="d-flex justify-content-center align-items-center text-white" mat-icon-button>
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+        <button class="d-flex justify-content-center align-items-center text-white" mat-icon-button>
+          <mat-icon>person</mat-icon>
+        </button>
+        <button class="d-flex justify-content-center align-items-center text-white d-sm-none" mat-icon-button
+                (click)="onToggleSidenav()">
+          <mat-icon>menu</mat-icon>
+        </button>
       </article>
     </section>
   </section>

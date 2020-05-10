@@ -1,18 +1,41 @@
 <section class="t-container">
-  <article class="row">
-    <article class="image-container col-md-6">
-      <img class="image" [src]="product.image" alt="Photo of a product">
-    </article>
-    <article class="product-info col-md-6">
-      <h6>{{product.name}}</h6>
-      <h6>{{product.price}} €</h6>
-      <p>{{product.description}}</p>
-      <section>
-        <a routerLink="/edit/{{product.id}}">Edit product</a>
+  <article>
+    <ks-carousel
+      [id]="103"
+      [images]="images"
+      [infinite]="true"
+      [playConfig]="{autoPlay: false, interval: 5000, pauseOnHover: true}"
+      [previewConfig]="{visible: true, number: 3, width: 'auto', maxHeight: '150px'}"></ks-carousel>
+  </article>
+  <article>
+    <h4 class="mt-0">{{product.name}}</h4>
+    <h5>{{product.price}} €</h5>
+    <p>{{product.description}}</p>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <mat-form-field appearance="outline" class="form-label">
+        <mat-label>Size</mat-label>
+        <mat-select formControlName="size">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let size of sizes" [value]="size">{{size}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <section class="d-flex">
+        <button class="flex-grow-1 py-2 mr-3" [ngClass]="form.valid ? 'bg-black text-white' : ''" [disabled]="!form.valid" mat-flat-button type="submit">
+          <span class="add-to-cart-btn d-flex justify-content-between align-items-center ">
+            <span>Add to cart!</span>
+            <mat-icon>shopping_cart</mat-icon>
+          </span>
+        </button>
+        <button class="bg-black text-white py-2" mat-flat-button type="button">
+          <mat-icon>favorite_border</mat-icon>
+        </button>
       </section>
-      <section>
-        <button mat-button mat-raised-button (click)="removeProduct()">Remove product</button>
-      </section>
-    </article>
+    </form>
+    <section>
+      <a routerLink="/edit/{{product.id}}">Edit product</a>
+    </section>
+    <section>
+      <button mat-button mat-raised-button (click)="removeProduct()">Remove product</button>
+    </section>
   </article>
 </section>
