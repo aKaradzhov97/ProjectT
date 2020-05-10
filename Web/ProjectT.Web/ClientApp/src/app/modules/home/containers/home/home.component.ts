@@ -20,11 +20,13 @@ import {Product} from '../../../../shared/models/product.model';
 })
 export class HomeComponent implements OnInit {
 
-  products$: Observable<Product[]>;
+  trendingProducts$: Observable<Product[]>;
+  newestProducts$: Observable<Product[]>;
 
   constructor(private store: Store<fromStore.ProductsState>) {}
 
   ngOnInit() {
-    this.products$ = this.store.select(fromStore.getAllProducts);
+    this.trendingProducts$ = this.store.select(fromStore.getTrendingProducts);
+    this.newestProducts$ = this.store.select(fromStore.getNewestProducts);
   }
 }
