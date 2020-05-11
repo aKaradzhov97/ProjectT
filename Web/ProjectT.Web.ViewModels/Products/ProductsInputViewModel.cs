@@ -34,6 +34,6 @@
 
         public int SellCount { get; set; }
 
-        public List<ProductImagesInputViewModel> Images { get; set; }
+        public List<Image> Images { get; set; }
     }
 }

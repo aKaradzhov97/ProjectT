@@ -1,7 +1,8 @@
-﻿namespace ProjectT.Web.Controllers
+﻿using System.Linq;
+
+namespace ProjectT.Web.Controllers
 {
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using ProjectT.Data.Models;
@@ -39,15 +40,20 @@
                 return this.BadRequest();
             }
 
-            if (product.Images == null)
+            var data = await this.productsServices.CreateProduct(product);
+            return this.Ok(new {Message = "Success!", data});
+        }
+
+        [HttpDelete("delete/{id?}")]
+        public async Task<ActionResult> Delete(string id)
+        {
+            if (!this.ModelState.IsValid)
             {
-                var data = await this.productsServices.CreateProduct(product);
-                return this.Ok(new {Message = "Success!", data});
+                return this.BadRequest();
             }
-            else
-            {
-                return this.Ok(new {Message = "Please Implement in Product controller and Service!"});
-            }
+
+            var data = await this.productsServices.DeleteProduct(id);
+            return this.CreatedAtAction("GetAll", new {Message = "Success!", data});
         }
     }
 }

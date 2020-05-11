@@ -12,7 +12,7 @@
             this.Carts = new HashSet<Cart>();
             this.Inventories = new HashSet<Inventory>();
             this.OrderItems = new HashSet<OrderItem>();
-            this.Images = new HashSet<Image>();
+            this.Images = new List<Image>();
         }
 
         [Key]
@@ -48,6 +48,6 @@
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }
 
-        public virtual ICollection<Image> Images { get; set; }
+        public virtual List<Image> Images { get; set; }
     }
 }
