@@ -4,10 +4,10 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
     using Microsoft.EntityFrameworkCore;
     using ProjectT.Data.Common.Repositories;
     using ProjectT.Data.Models;
+    using ProjectT.Services.Mapping;
     using ProjectT.Web.ViewModels.Products;
 
     public class ProductsServices : IProductsServices
@@ -28,8 +28,7 @@
             return await this.repositoryProduct.All().ToListAsync();
         }
 
-        // TO DO PLEASE IMPLEMENTING
-        public async Task<IEnumerable<Product>> CreateProduct(ProductsInputViewModel product)
+        public async Task<IEnumerable<ProductsInputViewModel>> CreateProduct(ProductsInputViewModel product)
         {
             var newProduct = new Product
             {
@@ -41,23 +40,75 @@
                 Created_On = DateTime.UtcNow,
                 SellCount = 0,
             };
-            if (product.Images != null)
-            {
-                newProduct.Images.AddRange(product.Images);
-            }
 
             await this.repositoryProduct.AddAsync(newProduct);
             await this.repositoryProduct.SaveChangesAsync();
 
-            return await this.GetAllProducts();
+            if (product.Images != null && product.Images.Count != 0)
+            {
+                foreach (var image in product.Images)
+                {
+                    var newImage = new Image
+                    {
+                        ImageUrl = image.ImageUrl,
+                        ProductId = newProduct.Id,
+                    };
+
+                    await this.repositoryImage.AddAsync(newImage);
+                    await this.repositoryImage.SaveChangesAsync();
+                }
+            }
+
+            return await this.repositoryProduct.All().To<ProductsInputViewModel>().ToListAsync();
         }
 
-        public async Task<IEnumerable<Image>> TakeProductImages(string id)
+        public async Task<Product> EditProduct(string id, ProductsInputViewModel product)
         {
-            var allImages = await this.repositoryImage.All()
-                .Where(x => x.ProductId == id).ToListAsync();
+            var currentProduct = await this.repositoryProduct.All()
+                .FirstOrDefaultAsync(x => x.Id == id);
 
-            return allImages;
+            if (currentProduct != null)
+            {
+                this.repositoryProduct.Delete(currentProduct);
+
+                currentProduct = new Product
+                {
+                    Id = id,
+                    Description = product.Description,
+                    Image = product.Image,
+                    Price = product.Price,
+                    Quantity = product.Quantity,
+                    Created_On = DateTime.UtcNow,
+                    SellCount = product.SellCount,
+                };
+
+                if (product.Images != null && product.Images.Count != 0)
+                {
+                    foreach (var image in product.Images)
+                    {
+                        var currentImage = await this.repositoryImage.All().FirstOrDefaultAsync(x => x.ProductId == id);
+                        if (currentImage != null)
+                        {
+                            this.repositoryImage.Delete(currentImage);
+                            currentImage = new Image
+                            {
+                                Id = image.Id,
+                                ImageUrl = image.ImageUrl,
+                                ProductId = id,
+                            };
+
+                            await this.repositoryImage.AddAsync(currentImage);
+                        }
+                    }
+                }
+
+                await this.repositoryImage.SaveChangesAsync();
+            }
+
+            await this.repositoryProduct.AddAsync(currentProduct);
+            await this.repositoryProduct.SaveChangesAsync();
+
+            return currentProduct;
         }
 
         public async Task<IEnumerable<Product>> DeleteProduct(string id)

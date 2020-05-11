@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace ProjectT.Web.Controllers
 {
@@ -41,6 +41,18 @@ namespace ProjectT.Web.Controllers
             }
 
             var data = await this.productsServices.CreateProduct(product);
+            return this.Ok(new {Message = "Success!", data});
+        }
+
+        [HttpPut("edit/{id?}")]
+        public async Task<ActionResult> Edit(string id, ProductsInputViewModel product)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            var data = await this.productsServices.EditProduct(id, product);
             return this.Ok(new {Message = "Success!", data});
         }
 

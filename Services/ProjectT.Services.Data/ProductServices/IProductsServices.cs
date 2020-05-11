@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
     using ProjectT.Data.Models;
     using ProjectT.Web.ViewModels.Products;
 
@@ -10,9 +9,9 @@
     {
         Task<IEnumerable<Product>> GetAllProducts();
 
-        Task<IEnumerable<Product>> CreateProduct(ProductsInputViewModel product);
+        Task<IEnumerable<ProductsInputViewModel>> CreateProduct(ProductsInputViewModel product);
 
-        Task<IEnumerable<Image>> TakeProductImages(string id);
+        Task<Product> EditProduct(string id, ProductsInputViewModel product);
 
         Task<IEnumerable<Product>> DeleteProduct(string id);
     }
