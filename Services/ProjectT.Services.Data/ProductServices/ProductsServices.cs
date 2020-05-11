@@ -28,7 +28,7 @@
             return await this.repositoryProduct.All().ToListAsync();
         }
 
-        public async Task<IEnumerable<ProductsInputViewModel>> CreateProduct(ProductsInputViewModel product)
+        public async Task<ProductsInputViewModel> CreateProduct(ProductsInputViewModel product)
         {
             var newProduct = new Product
             {
@@ -59,7 +59,7 @@
                 }
             }
 
-            return await this.repositoryProduct.All().To<ProductsInputViewModel>().ToListAsync();
+            return await this.repositoryProduct.All().To<ProductsInputViewModel>().FirstOrDefaultAsync();
         }
 
         public async Task<Product> EditProduct(string id, ProductsInputViewModel product)
