@@ -1,6 +1,6 @@
-import {Action} from '@ngrx/store';
+import { Action } from '@ngrx/store';
 
-import {Product} from '../../../../shared/models/product.model';
+import { Product } from '../../../../shared/models/product.model';
 
 // LOAD PRODUCTS
 export const LOAD_PRODUCTS = '[Products] Load Products';
@@ -14,23 +14,21 @@ export class LoadProducts implements Action {
 export class LoadProductsFail implements Action {
   readonly type = LOAD_PRODUCTS_FAIL;
 
-  constructor(public payload: any) {
-  }
+  constructor(public payload: any) {}
 }
 
 export class LoadProductsSuccess implements Action {
   readonly type = LOAD_PRODUCTS_SUCCESS;
 
-  constructor(public payload: any) {
-  }
+  constructor(public payload: any) {}
 }
-
 
 // LOAD PRODUCTS HOME
 
 export const LOAD_PRODUCTS_HOME = '[Products] Load Products Home';
 export const LOAD_PRODUCTS_HOME_FAIL = '[Products] Load Products Home Fail';
-export const LOAD_PRODUCTS_HOME_SUCCESS = '[Products] Load Products Home Success';
+export const LOAD_PRODUCTS_HOME_SUCCESS =
+  '[Products] Load Products Home Success';
 
 export class LoadProductsHome implements Action {
   readonly type = LOAD_PRODUCTS_HOME;
@@ -39,17 +37,14 @@ export class LoadProductsHome implements Action {
 export class LoadProductsHomeFail implements Action {
   readonly type = LOAD_PRODUCTS_HOME_FAIL;
 
-  constructor(public payload: any) {
-  }
+  constructor(public payload: any) {}
 }
 
 export class LoadProductsHomeSuccess implements Action {
   readonly type = LOAD_PRODUCTS_HOME_SUCCESS;
 
-  constructor(public payload: any) {
-  }
+  constructor(public payload: any) {}
 }
-
 
 // CREATE
 
@@ -60,22 +55,19 @@ export const CREATE_PRODUCT_SUCCESS = '[Products] Create Product Success';
 export class CreateProduct implements Action {
   readonly type = CREATE_PRODUCT;
 
-  constructor(public payload: Product) {
-  }
+  constructor(public payload: Product) {}
 }
 
 export class CreateProductFail implements Action {
   readonly type = CREATE_PRODUCT_FAIL;
 
-  constructor(public payload: any) {
-  }
+  constructor(public payload: any) {}
 }
 
 export class CreateProductSuccess implements Action {
   readonly type = CREATE_PRODUCT_SUCCESS;
 
-  constructor(public payload: Product) {
-  }
+  constructor(public payload: Product) {}
 }
 
 // UPDATE
@@ -87,22 +79,19 @@ export const UPDATE_PRODUCT_SUCCESS = '[Products] Update Product Success';
 export class UpdateProduct implements Action {
   readonly type = UPDATE_PRODUCT;
 
-  constructor(public payload: Product) {
-  }
+  constructor(public payload: Product) {}
 }
 
 export class UpdateProductFail implements Action {
   readonly type = UPDATE_PRODUCT_FAIL;
 
-  constructor(public payload: any) {
-  }
+  constructor(public payload: any) {}
 }
 
 export class UpdateProductSuccess implements Action {
   readonly type = UPDATE_PRODUCT_SUCCESS;
 
-  constructor(public payload: Product) {
-  }
+  constructor(public payload: Product) {}
 }
 
 // DELETE
@@ -114,22 +103,19 @@ export const DELETE_PRODUCT_SUCCESS = '[Products] Delete Product Success';
 export class DeleteProduct implements Action {
   readonly type = DELETE_PRODUCT;
 
-  constructor(public payload: Product) {
-  }
+  constructor(public payload: Product) {}
 }
 
 export class DeleteProductFail implements Action {
   readonly type = DELETE_PRODUCT_FAIL;
 
-  constructor(public payload: any) {
-  }
+  constructor(public payload: any) {}
 }
 
 export class DeleteProductSuccess implements Action {
   readonly type = DELETE_PRODUCT_SUCCESS;
 
-  constructor(public payload: Product) {
-  }
+  constructor(public payload: Product) {}
 }
 
 // Action types

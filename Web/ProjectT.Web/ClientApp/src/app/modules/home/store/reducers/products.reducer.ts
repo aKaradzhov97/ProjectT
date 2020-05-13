@@ -1,11 +1,11 @@
 import * as fromProducts from '../actions/products.action';
-import {Product} from '../../../../shared/models/product.model';
+import { Product } from '../../../../shared/models/product.model';
 
 export interface ProductState {
   entities: { [id: string]: Product };
-  ids: string[],
-  newest: { [id: string]: Product },
-  trending: { [id: string]: Product }
+  ids: string[];
+  newest: { [id: string]: Product };
+  trending: { [id: string]: Product };
   selectedProduct: Product;
   loaded: boolean;
   loading: boolean;
@@ -21,8 +21,10 @@ export const initialState: ProductState = {
   loading: false,
 };
 
-export function reducer(state = initialState,
-                        action: fromProducts.ProductsAction): ProductState {
+export function reducer(
+  state = initialState,
+  action: fromProducts.ProductsAction
+): ProductState {
   switch (action.type) {
     case fromProducts.LOAD_PRODUCTS:
     case fromProducts.LOAD_PRODUCTS_HOME: {
@@ -107,7 +109,8 @@ export function reducer(state = initialState,
   return state;
 }
 
-export const getTrendingProductsEntities = (state: ProductState) => state.trending;
+export const getTrendingProductsEntities = (state: ProductState) =>
+  state.trending;
 export const getNewestProductsEntities = (state: ProductState) => state.newest;
 export const getProductsEntities = (state: ProductState) => state.entities;
 export const getProductsLoading = (state: ProductState) => state.loading;

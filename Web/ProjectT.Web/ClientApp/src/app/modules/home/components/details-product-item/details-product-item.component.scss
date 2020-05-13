@@ -43,22 +43,4 @@ app-details-product-item {
   .add-to-cart-btn {
     font-size: to-rem(16px);
   }
-
-  .mat-form-field-type-mat-select .mat-form-field-label,
-  .mat-select-value-text {
-    padding-left: to-rem(8px);
-    padding-right: to-rem(8px);
-    @include media-breakpoint-md-up() {
-      padding-left: to-rem(5px);
-      padding-right: to-rem(5px);
-    }
-  }
-
-  .mat-form-field-appearance-outline .mat-form-field-wrapper {
-    margin: 0;
-  }
-
-  .mat-form-field-wrapper {
-    padding-bottom: to-rem(16px);
-  }
 }

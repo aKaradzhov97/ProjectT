@@ -9,11 +9,10 @@ import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 // Models
-import {User} from '../../shared/models/user.model';
+import { User } from '../../shared/models/user.model';
 
 // Constants
 import { API_CONSTANTS } from '../../shared/constants';
-
 
 const BASE_URL = API_CONSTANTS.BASE_URL + API_CONSTANTS.AUTH_ENDPOINT;
 

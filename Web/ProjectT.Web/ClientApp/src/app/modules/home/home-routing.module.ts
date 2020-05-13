@@ -1,15 +1,15 @@
 // Decorators
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
 // Modules
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 // Guards
 import * as fromGuards from './guards';
 
 // Components
-import {HomeComponent} from './containers/home/home.component';
-import {DetailsProductComponent} from './containers/details-product/details-product.component';
+import { HomeComponent } from './containers/home/home.component';
+import { DetailsProductComponent } from './containers/details-product/details-product.component';
 
 const ROUTES: Routes = [
   {
@@ -27,7 +27,6 @@ const ROUTES: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(ROUTES)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRoutingModule {
-}
+export class HomeRoutingModule {}

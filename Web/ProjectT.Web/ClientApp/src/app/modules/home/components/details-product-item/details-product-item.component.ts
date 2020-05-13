@@ -6,14 +6,15 @@ import {
   Input,
   OnInit,
   Output,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
+
 // Models
-import {Product} from '../../../../shared/models/product.model';
-import {Image} from '@ks89/angular-modal-gallery';
+import { Product } from '../../../../shared/models/product.model';
+import { Image } from '@ks89/angular-modal-gallery';
 
 // Forms
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-details-product-item',
@@ -23,7 +24,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   encapsulation: ViewEncapsulation.None,
 })
 export class DetailsProductItemComponent implements OnInit {
-
   @Input() product: Product = null;
 
   @Output() onRemove = new EventEmitter();
@@ -32,38 +32,36 @@ export class DetailsProductItemComponent implements OnInit {
 
   form: FormGroup;
 
-  images: Image[] = []
+  images: Image[] = [];
 
-  sizes: string[] = [
-    'XS',
-    'S',
-    'M',
-    'L',
-    'XL',
-  ]
+  sizes = [
+    {
+      text: 'XS',
+      value: 'xs',
+    },
+    {
+      text: 'S',
+      value: 's',
+    },
+    {
+      text: 'M',
+      value: 'm',
+    },
+    {
+      text: 'L',
+      value: 'l',
+    },
+    {
+      text: 'XL',
+      value: 'xl',
+    },
+  ];
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.images = [
-      new Image(1, {
-        img: 'https://raw.githubusercontent.com/Ks89/angular-modal-gallery/master/examples/systemjs/assets/images/gallery/pexels-photo-547115.jpeg'
-      }),
-      new Image(2, {
-        img: 'https://raw.githubusercontent.com/Ks89/angular-modal-gallery/master/examples/systemjs/assets/images/gallery/pexels-photo-556664.jpeg',
-      }),
-      new Image(3, {
-        img: 'https://raw.githubusercontent.com/Ks89/angular-modal-gallery/master/examples/systemjs/assets/images/gallery/pexels-photo-787594.jpeg',
-      }),
-      new Image(4, {
-        img: 'https://raw.githubusercontent.com/Ks89/angular-modal-gallery/master/examples/systemjs/assets/images/gallery/pexels-photo-803105.jpeg'
-      })
-    ];
-
-    this.form = new FormGroup({
-      size: new FormControl('', Validators.required),
-    });
+    this.initImages();
+    this.initForm();
   }
 
   removeProduct() {
@@ -76,5 +74,20 @@ export class DetailsProductItemComponent implements OnInit {
       ...this.form.value,
     };
     this.formSubmit.emit(this.form.value);
+  }
+
+  initForm(): void {
+    this.form = new FormGroup({
+      size: new FormControl('', Validators.required),
+      title: new FormControl('', Validators.required),
+    });
+  }
+
+  initImages(): void {
+    this.images = this.product.images.map((image, index) => {
+      return new Image(index, {
+        img: image.url,
+      });
+    });
   }
 }

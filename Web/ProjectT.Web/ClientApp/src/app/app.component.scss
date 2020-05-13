@@ -1,4 +1,4 @@
-@import './src/styles';
+@import "./src/styles";
 
 :host {
   display: flex;
@@ -9,7 +9,9 @@
     flex: 1;
   }
 
-  mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  mat-sidenav-container,
+  mat-sidenav-content,
+  mat-sidenav {
     height: 100%;
   }
 

@@ -1,82 +1,52 @@
 // Decorators & Lifehooks
-import { Component, OnInit, Input, ViewChild, ElementRef, Self,  } from '@angular/core';
 import {
-  ControlValueAccessor, Validator, AbstractControl,
-  ValidatorFn, Validators, NgControl
-} from '@angular/forms';
+  Component,
+  Input,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
+
+// Forms
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
-export class InputComponent implements ControlValueAccessor, Validator, OnInit {
+export class InputComponent implements AfterViewInit {
   @ViewChild('input') input: ElementRef;
-  disabled;
+
+  @Input() form: FormGroup = null;
+
+  @Input() isMaterial = true;
 
   @Input() type = 'text';
-  @Input() isRequired = false;
-  @Input() pattern: string = null;
+
+  @Input() name = null;
+
   @Input() label: string = null;
-  @Input() placeholder: string;
-  @Input() errorMsg: string;
-  @Input() isMaterialInput = true;
 
-  constructor(@Self() public controlDir: NgControl) {
-    this.controlDir.valueAccessor = this;
-  }
+  @Input() placeholder: string = null;
 
-  ngOnInit() {
-    const control = this.controlDir.control;
-    const validators: ValidatorFn[] = control.validator ? [control.validator] : [];
-    if (this.isRequired) {
-      validators.push(Validators.required);
-    }
-    if (this.pattern) {
-      validators.push(Validators.pattern(this.pattern));
-    }
+  @Input() required = false;
 
-    control.setValidators(validators);
-    control.updateValueAndValidity();
-  }
+  @Input() disabled = false;
 
-  onChange(event) { }
+  @Input() error: string;
 
-  onTouched() { }
+  ngAfterViewInit(): void {
+    // Obtain the control over the select.
+    const control = this.form.get(this.name);
 
-  writeValue(obj: any): void {
-    if (this.input) {
-      this.input.nativeElement.value = obj;
-    } else {
-      console.log('SOMETHING is wrong with our GENERIC INPUT!');
+    // Then check validity and mark as touched.
+    if (!!control && control.invalid && control.dirty) {
+      control.markAsTouched();
     }
   }
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-  setDisabledState?(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
 
-  validate(c: AbstractControl): { [key: string]: any; } {
-    const validators: ValidatorFn[] = [];
-    if (this.isRequired) {
-      validators.push(Validators.required);
-    }
-    if (this.pattern) {
-      validators.push(Validators.pattern(this.pattern));
-    }
-
-    return validators;
+  showError() {
+    return !!this.error;
   }
-
 }
-
-
-
-
-
-

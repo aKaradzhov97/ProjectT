@@ -1,17 +1,16 @@
 // Decorators and Lifehooks
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 // Forms
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Services
-import {AuthService} from '../../../../core/services/auth.service';
-
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   @Input() categories: any[] = [];
@@ -23,8 +22,7 @@ export class HeaderComponent implements OnInit {
 
   isAuthenticated: boolean = this.authService.isLoggedIn();
 
-  constructor(private authService: AuthService) {
-  }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -34,7 +32,7 @@ export class HeaderComponent implements OnInit {
 
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
-  }
+  };
 
   onSubmit(): void {
     this.formSubmit.emit(this.form.value);

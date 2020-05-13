@@ -1,1 +1,18 @@
-<p>select works!</p>
+<mat-form-field class="d-block" [formGroup]="form">
+  <mat-label>{{ label }}</mat-label>
+  <mat-select
+    [formControlName]="name"
+    (selectionChange)="onChange.emit($event)"
+    [placeholder]="placeholder"
+    [disableOptionCentering]="true"
+    panelClass="app-select"
+  >
+    <mat-option
+      *ngFor="let option of data"
+      [value]="option.value"
+      [textContent]="option.text"
+    >
+    </mat-option>
+  </mat-select>
+  <mat-error [class.hidden]="showError()"> {{ error }} </mat-error>
+</mat-form-field>

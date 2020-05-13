@@ -1,14 +1,14 @@
 // Decorators
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 // RXJS
-import {Subject} from 'rxjs';
+import { Subject } from 'rxjs';
 
 // Models
-import {User} from '../../shared/models/user.model';
+import { User } from '../../shared/models/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   isUserLogged = new Subject<boolean>();

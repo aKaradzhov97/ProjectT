@@ -6,7 +6,7 @@ import * as fromFeature from '../reducers';
 import * as fromProducts from '../reducers/products.reducer';
 
 // Model
-import {Product} from '../../../../shared/models/product.model';
+import { Product } from '../../../../shared/models/product.model';
 
 // Selectors
 export const getProductState = createSelector(
@@ -29,7 +29,6 @@ export const getNewestProductsEntities = createSelector(
   fromProducts.getNewestProductsEntities
 );
 
-
 export const getSelectedProduct = createSelector(
   getProductsEntities,
   fromRoot.getRouterState,
@@ -38,17 +37,26 @@ export const getSelectedProduct = createSelector(
   }
 );
 
-export const getAllProducts = createSelector(getProductsEntities, entities => {
-  return Object.keys(entities).map(id => entities[id]);
-});
+export const getAllProducts = createSelector(
+  getProductsEntities,
+  (entities) => {
+    return Object.keys(entities).map((id) => entities[id]);
+  }
+);
 
-export const getTrendingProducts = createSelector(getTrendingProductsEntities, entities => {
-  return Object.keys(entities).map(id => entities[id]);
-});
+export const getTrendingProducts = createSelector(
+  getTrendingProductsEntities,
+  (entities) => {
+    return Object.keys(entities).map((id) => entities[id]);
+  }
+);
 
-export const getNewestProducts = createSelector(getNewestProductsEntities, entities => {
-  return Object.keys(entities).map(id => entities[id]);
-});
+export const getNewestProducts = createSelector(
+  getNewestProductsEntities,
+  (entities) => {
+    return Object.keys(entities).map((id) => entities[id]);
+  }
+);
 
 export const getProductsLoaded = createSelector(
   getProductState,

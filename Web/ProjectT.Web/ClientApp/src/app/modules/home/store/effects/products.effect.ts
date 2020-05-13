@@ -1,31 +1,29 @@
-import {Injectable} from '@angular/core';
-import {Product} from '../../../../shared/models/product.model';
+import { Injectable } from '@angular/core';
+import { Product } from '../../../../shared/models/product.model';
 
-import {Effect, Actions, ofType} from '@ngrx/effects';
-import {of} from 'rxjs';
-import {map, switchMap, catchError} from 'rxjs/operators';
+import { Effect, Actions, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
+import { map, switchMap, catchError } from 'rxjs/operators';
 
 import * as fromRoot from '../../../../store';
 import * as productActions from '../actions/products.action';
 import * as fromServices from '../../../../core/services/product.service';
 
-
 @Injectable()
 export class ProductsEffect {
-  constructor(private actions$: Actions,
-              private productService: fromServices.ProductService) {
-  }
+  constructor(
+    private actions$: Actions,
+    private productService: fromServices.ProductService
+  ) {}
 
   @Effect()
   loadProducts$ = this.actions$.pipe(
     ofType(productActions.LOAD_PRODUCTS),
     switchMap(() => {
-      return this.productService
-        .getProducts()
-        .pipe(
-          map(products => new productActions.LoadProductsSuccess(products)),
-          catchError(error => of(new productActions.LoadProductsFail(error)))
-        );
+      return this.productService.getProducts().pipe(
+        map((products) => new productActions.LoadProductsSuccess(products)),
+        catchError((error) => of(new productActions.LoadProductsFail(error)))
+      );
     })
   );
 
@@ -33,12 +31,12 @@ export class ProductsEffect {
   loadProductsHome$ = this.actions$.pipe(
     ofType(productActions.LOAD_PRODUCTS_HOME),
     switchMap(() => {
-      return this.productService
-        .getHomeProducts()
-        .pipe(
-          map(products => new productActions.LoadProductsHomeSuccess(products)),
-          catchError(error => of(new productActions.LoadProductsHomeFail(error)))
-        );
+      return this.productService.getHomeProducts().pipe(
+        map((products) => new productActions.LoadProductsHomeSuccess(products)),
+        catchError((error) =>
+          of(new productActions.LoadProductsHomeFail(error))
+        )
+      );
     })
   );
 
@@ -47,36 +45,44 @@ export class ProductsEffect {
     ofType(productActions.CREATE_PRODUCT),
     map((action: productActions.CreateProduct) => action.payload),
     switchMap((product: Product) => {
-      return this.productService
-        .createProduct(product)
-        .pipe(
-          map((response: any) => new productActions.CreateProductSuccess(response.data)),
-          catchError((error: any) => of(new productActions.CreateProductFail(error)))
-        );
+      return this.productService.createProduct(product).pipe(
+        map(
+          (response: any) =>
+            new productActions.CreateProductSuccess(response.data)
+        ),
+        catchError((error: any) =>
+          of(new productActions.CreateProductFail(error))
+        )
+      );
     })
   );
 
   @Effect()
-  createProductSuccess$ = this.actions$
-    .pipe(
-      ofType(productActions.CREATE_PRODUCT_SUCCESS),
-      map((action: productActions.CreateProductSuccess) => action.payload),
-      map((product: Product) => new fromRoot.Go({
-        path: ['/products', product.id]
-      }))
-    );
+  createProductSuccess$ = this.actions$.pipe(
+    ofType(productActions.CREATE_PRODUCT_SUCCESS),
+    map((action: productActions.CreateProductSuccess) => action.payload),
+    map(
+      (product: Product) =>
+        new fromRoot.Go({
+          path: ['/products', product.id],
+        })
+    )
+  );
 
   @Effect()
   updateProduct$ = this.actions$.pipe(
     ofType(productActions.UPDATE_PRODUCT),
     map((action: productActions.UpdateProduct) => action.payload),
     switchMap((product: Product) => {
-      return this.productService
-        .updateProduct(product)
-        .pipe(
-          map((response: any) => new productActions.UpdateProductSuccess(response.data)),
-          catchError((error: any) => of(new productActions.UpdateProductFail(error)))
-        );
+      return this.productService.updateProduct(product).pipe(
+        map(
+          (response: any) =>
+            new productActions.UpdateProductSuccess(response.data)
+        ),
+        catchError((error: any) =>
+          of(new productActions.UpdateProductFail(error))
+        )
+      );
     })
   );
 
@@ -85,23 +91,25 @@ export class ProductsEffect {
     ofType(productActions.DELETE_PRODUCT),
     map((action: productActions.DeleteProduct) => action.payload),
     switchMap((product: Product) => {
-      return this.productService
-        .deleteProduct(product)
-        .pipe(
-          map(() => new productActions.DeleteProductSuccess(product)),
-          catchError((error: any) => of(new productActions.DeleteProductFail(error)))
-        );
+      return this.productService.deleteProduct(product).pipe(
+        map(() => new productActions.DeleteProductSuccess(product)),
+        catchError((error: any) =>
+          of(new productActions.DeleteProductFail(error))
+        )
+      );
     })
   );
 
   @Effect()
-  handleProductSuccess$ = this.actions$
-    .pipe(
-      ofType(productActions.UPDATE_PRODUCT_SUCCESS, productActions.DELETE_PRODUCT_SUCCESS),
-      map((product: Product) => {
-        return new fromRoot.Go({
-          path: ['/products'],
-        });
-      }),
-    );
+  handleProductSuccess$ = this.actions$.pipe(
+    ofType(
+      productActions.UPDATE_PRODUCT_SUCCESS,
+      productActions.DELETE_PRODUCT_SUCCESS
+    ),
+    map((product: Product) => {
+      return new fromRoot.Go({
+        path: ['/products'],
+      });
+    })
+  );
 }

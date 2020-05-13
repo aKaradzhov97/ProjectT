@@ -1,13 +1,13 @@
 // Decorators & Lifehooks
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 // Models
-import {Category} from './shared/models/category.model';
+import { Category } from './shared/models/category.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   loadingBarColor = `#ff4081`;
@@ -43,6 +43,6 @@ export class AppComponent {
       name: 'HOT!',
       createdOn: 'Today',
       subcategories: [],
-    }
+    },
   ];
 }

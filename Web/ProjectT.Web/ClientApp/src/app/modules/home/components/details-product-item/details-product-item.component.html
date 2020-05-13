@@ -1,27 +1,52 @@
 <section class="t-container">
   <article>
     <ks-carousel
-      [id]="103"
+      [id]="1"
       [images]="images"
       [infinite]="true"
-      [playConfig]="{autoPlay: false, interval: 5000, pauseOnHover: true}"
-      [previewConfig]="{visible: true, number: 3, width: 'auto', maxHeight: '150px'}"></ks-carousel>
+      [playConfig]="{ autoPlay: false, interval: 5000, pauseOnHover: true }"
+      [previewConfig]="{
+        visible: true,
+        number: 3,
+        width: 'auto',
+        maxHeight: '150px'
+      }"
+    ></ks-carousel>
   </article>
   <article>
-    <h4 class="mt-0">{{product.name}}</h4>
-    <h5>{{product.price}} €</h5>
-    <p>{{product.description}}</p>
+    <h4 class="mt-0">{{ product.name }}</h4>
+    <h5>{{ product.price }} €</h5>
+    <p>{{ product.description }}</p>
     <form (ngSubmit)="onSubmit()" [formGroup]="form">
-      <mat-form-field appearance="outline" class="form-label">
-        <mat-label>Size</mat-label>
-        <mat-select formControlName="size">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let size of sizes" [value]="size">{{size}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <app-select
+        [form]="form"
+        [name]="'size'"
+        [label]="'Size'"
+        [placeholder]="'Pick a size..'"
+        [data]="sizes"
+        [error]="'Please pick a size to continue!'"
+      >
+      </app-select>
+      <app-input
+        [form]="form"
+        [isMaterial]="true"
+        [name]="'title'"
+        [label]="'Title'"
+        [placeholder]="'Select a title'"
+        [error]="'Cannot be empty!'"
+      >
+      </app-input>
       <section class="d-flex">
-        <button class="flex-grow-1 py-2 mr-3" [ngClass]="form.valid ? 'bg-black text-white' : ''" [disabled]="!form.valid" mat-flat-button type="submit">
-          <span class="add-to-cart-btn d-flex justify-content-between align-items-center ">
+        <button
+          class="flex-grow-1 py-2 mr-3"
+          [ngClass]="form.valid ? 'bg-black text-white' : ''"
+          [disabled]="!form.valid"
+          mat-flat-button
+          type="submit"
+        >
+          <span
+            class="add-to-cart-btn d-flex justify-content-between align-items-center"
+          >
             <span>Add to cart!</span>
             <mat-icon>shopping_cart</mat-icon>
           </span>
@@ -32,10 +57,12 @@
       </section>
     </form>
     <section>
-      <a routerLink="/edit/{{product.id}}">Edit product</a>
+      <a routerLink="/edit/{{ product.id }}">Edit product</a>
     </section>
     <section>
-      <button mat-button mat-raised-button (click)="removeProduct()">Remove product</button>
+      <button mat-button mat-raised-button (click)="removeProduct()">
+        Remove product
+      </button>
     </section>
   </article>
 </section>

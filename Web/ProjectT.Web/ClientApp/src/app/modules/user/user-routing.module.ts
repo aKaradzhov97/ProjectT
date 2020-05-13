@@ -1,14 +1,13 @@
 // Decorators
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
 // Modules
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 // Guards
 
 // Components
-import {UserAccountComponent} from './containers/user-account/user-account.component';
-
+import { UserAccountComponent } from './containers/user-account/user-account.component';
 
 const ROUTES: Routes = [
   {
@@ -19,7 +18,6 @@ const ROUTES: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(ROUTES)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UserRoutingModule {
-}
+export class UserRoutingModule {}

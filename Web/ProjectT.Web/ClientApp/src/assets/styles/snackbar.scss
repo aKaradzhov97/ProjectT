@@ -1,0 +1,11 @@
+@import './colors';
+
+.notification-success {
+  background-color: $bg-accent !important;
+  color: $text-white;
+}
+
+.notification-danger {
+  background-color: $bg-danger !important;
+  color: $text-white;
+}

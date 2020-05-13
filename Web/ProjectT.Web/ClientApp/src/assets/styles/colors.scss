@@ -4,6 +4,9 @@ $black: #000;
 $indigo: #3f51b5; // Purple
 $accent: #ff4081; // Pink
 
+// ALERTS
+$red: #fa3e3e;
+
 // GRAYSCALE
 $gray-bg: #fafafa;
 $gray-dark: #333;
@@ -18,7 +21,7 @@ $bg-black: $black;
 $bg-primary: $indigo;
 $bg-accent: $accent;
 $bg-gray: $gray-bg;
-
+$bg-danger: $red;
 
 // TEXT
 $text-white: $white;

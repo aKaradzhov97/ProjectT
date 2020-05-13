@@ -1,8 +1,18 @@
-<ngx-loading-bar [includeSpinner]="loadingSpinnerShown" [height]="loadingBarHeight" [color]="loadingBarColor"></ngx-loading-bar>
-<app-header (sidenavToggle)="sidenav.toggle()" [categories]="categories"></app-header>
+<ngx-loading-bar
+  [includeSpinner]="loadingSpinnerShown"
+  [height]="loadingBarHeight"
+  [color]="loadingBarColor"
+></ngx-loading-bar>
+<app-header
+  (sidenavToggle)="sidenav.toggle()"
+  [categories]="categories"
+></app-header>
 <mat-sidenav-container>
   <mat-sidenav #sidenav role="navigation">
-    <app-sidenav (sidenavClose)="sidenav.close()" [categories]="categories"></app-sidenav>
+    <app-sidenav
+      (sidenavClose)="sidenav.close()"
+      [categories]="categories"
+    ></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

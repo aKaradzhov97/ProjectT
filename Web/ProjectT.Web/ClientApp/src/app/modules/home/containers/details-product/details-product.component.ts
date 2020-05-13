@@ -1,15 +1,15 @@
 // Decorators & Lifehooks
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 // RXJS
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 // Store
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as fromStore from '../../store';
 
 // Models
-import {Product} from '../../../../shared/models/product.model';
+import { Product } from '../../../../shared/models/product.model';
 
 @Component({
   selector: 'app-details-product',
@@ -18,21 +18,21 @@ import {Product} from '../../../../shared/models/product.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DetailsProductComponent implements OnInit {
-
   product$: Observable<Product>;
 
-  constructor(private store: Store<fromStore.ProductsState>) { }
+  constructor(private store: Store<fromStore.ProductsState>) {}
 
   ngOnInit() {
     this.product$ = this.store.select(fromStore.getSelectedProduct);
   }
 
   onRemove(value): void {
-    const CONFIRMATION = window.confirm('Are you sure you want to delete this product?');
+    const CONFIRMATION = window.confirm(
+      'Are you sure you want to delete this product?'
+    );
 
     if (CONFIRMATION) {
       this.store.dispatch(new fromStore.DeleteProduct(value));
     }
   }
-
 }

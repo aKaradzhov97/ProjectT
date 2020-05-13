@@ -21,7 +21,6 @@ const CREATE_ONE_URL = `${BASE_URL}/create/`;
 const UPDATE_ONE_URL = `${BASE_URL}/update/`;
 const DELETE_ONE_URL = `${BASE_URL}/delete/`;
 
-
 @Injectable()
 export class CategoryService {
   constructor(private http: HttpClient) {}

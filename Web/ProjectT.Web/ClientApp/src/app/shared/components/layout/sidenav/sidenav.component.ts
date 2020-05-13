@@ -1,26 +1,23 @@
 // Decorators & Lifehooks
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 // Models
-import {Category} from '../../../models/category.model';
+import { Category } from '../../../models/category.model';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
-
   @Output() sidenavClose = new EventEmitter();
   @Input() categories: Category[] = [];
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public onSidenavClose = () => {
     this.sidenavClose.emit();
-  }
+  };
 }

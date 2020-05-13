@@ -1,16 +1,15 @@
 // Decorators & Lifehooks
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 // NGRX
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as fromStore from '../../store';
 
 // RXJS
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 // Models
-import {Product} from '../../../../shared/models/product.model';
-
+import { Product } from '../../../../shared/models/product.model';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +18,6 @@ import {Product} from '../../../../shared/models/product.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-
   trendingProducts$: Observable<Product[]>;
   newestProducts$: Observable<Product[]>;
 
