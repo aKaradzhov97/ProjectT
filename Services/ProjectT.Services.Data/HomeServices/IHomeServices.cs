@@ -4,11 +4,12 @@
     using System.Threading.Tasks;
 
     using ProjectT.Data.Models;
+    using ProjectT.Web.ViewModels.Products;
 
     public interface IHomeServices
     {
-            Task<IEnumerable<Product>> Newest();
+            Task<IEnumerable<ProductsInputViewModel>> Newest();
 
-            Task<IEnumerable<Product>> Trending();
+            Task<IEnumerable<ProductsInputViewModel>> Trending();
     }
 }

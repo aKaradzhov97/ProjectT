@@ -23,9 +23,9 @@
             this.repositoryImage = repositoryImage;
         }
 
-        public async Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<IEnumerable<ProductsInputViewModel>> GetAllProducts()
         {
-            return await this.repositoryProduct.All().ToListAsync();
+            return await this.repositoryProduct.All().To<ProductsInputViewModel>().ToListAsync();
         }
 
         public async Task<ProductsInputViewModel> CreateProduct(ProductsInputViewModel product)

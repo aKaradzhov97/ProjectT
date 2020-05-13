@@ -7,7 +7,7 @@
 
     public interface IProductsServices
     {
-        Task<IEnumerable<Product>> GetAllProducts();
+        Task<IEnumerable<ProductsInputViewModel>> GetAllProducts();
 
         Task<ProductsInputViewModel> CreateProduct(ProductsInputViewModel product);
 
