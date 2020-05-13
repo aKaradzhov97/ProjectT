@@ -47,7 +47,7 @@
 
             var user = await this.usersServices.GetInfo(currentUser.UserName);
 
-            return this.Ok(new { Message = "Success", data, user});
+            return this.Ok(new {Message = "Success", data, user});
         }
     }
 }
