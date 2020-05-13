@@ -171,7 +171,7 @@
                 {
                     var newImages = new Image
                     {
-                        ImageUrl = images,
+                        Url = images,
                         ProductId = newProduct.Id,
                     };
                     await dbContext.Images.AddAsync(newImages);

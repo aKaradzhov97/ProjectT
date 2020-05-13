@@ -14,7 +14,7 @@
         public string Id { get; set; }
 
         [Required]
-        public string ImageUrl { get; set; }
+        public string Url { get; set; }
 
         public string ProductId { get; set; }
 

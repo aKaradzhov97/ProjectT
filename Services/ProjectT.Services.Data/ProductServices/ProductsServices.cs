@@ -52,7 +52,7 @@
                 {
                     var newImage = new Image
                     {
-                        ImageUrl = image.Url,
+                        Url = image.Url,
                         ProductId = newProduct.Id,
                     };
 
@@ -95,7 +95,7 @@
                             currentImage = new Image
                             {
                                 Id = image.Id,
-                                ImageUrl = image.Url,
+                                Url = image.Url,
                                 ProductId = id,
                             };
 
