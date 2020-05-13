@@ -31,14 +31,13 @@ namespace ProjectT.Services.Data.HomeServices
             {
                 var data = new ImagesInputViewModel
                 {
-                    ImageUrl = newest.Select(a => a.Image).ToString(),
-                    ProductId = newest.Select(a => a.Id).FirstOrDefault(),
+                    ImageUrl = newest.Select(a => a.Image).FirstOrDefault(),
                 };
 
                 if (!image.Contains(data))
                 {
                     image.Insert(0, data);
-                    break;;
+                    break;
                 }
             }
 
@@ -57,8 +56,7 @@ namespace ProjectT.Services.Data.HomeServices
             {
                 var data = new ImagesInputViewModel
                 {
-                    ImageUrl = trending.Select(a => a.Image).ToString(),
-                    ProductId = trending.Select(a => a.Id).FirstOrDefault(),
+                    ImageUrl = trending.Select(a => a.Image).FirstOrDefault(),
                 };
 
                 if (!image.Contains(data))
