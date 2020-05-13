@@ -1,14 +1,14 @@
-﻿using ProjectT.Services.Mapping;
-
-namespace ProjectT.Services.Data.HomeServices
+﻿namespace ProjectT.Services.Data.HomeServices
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using ProjectT.Data.Common.Repositories;
     using ProjectT.Data.Models;
-    using ProjectT.Web.ViewModels.Products;
+    using ProjectT.Services.Mapping;
+    using ProjectT.Web.ViewModels.Products.OutputViewModels;
 
     public class HomeServices : IHomeServices
     {
@@ -19,19 +19,19 @@ namespace ProjectT.Services.Data.HomeServices
             this.repositoryProduct = repositoryProduct;
         }
 
-        public async Task<IEnumerable<ProductsInputViewModel>> Newest()
+        public async Task<IEnumerable<ProductsOutputViewModel>> Newest()
         {
             var newest = await this.repositoryProduct.All()
-                .To<ProductsInputViewModel>()
+                .To<ProductsOutputViewModel>()
                 .OrderByDescending(x => x.Created_On)
                 .Take(6)
                 .ToListAsync();
 
             foreach (var image in newest.Select(x => x.Images))
             {
-                var data = new ImagesInputViewModel
+                var data = new ImagesOutputViewModel
                 {
-                    ImageUrl = newest.Select(a => a.Image).FirstOrDefault(),
+                    Url = newest.Select(a => a.Image).FirstOrDefault(),
                 };
 
                 if (!image.Contains(data))
@@ -44,19 +44,19 @@ namespace ProjectT.Services.Data.HomeServices
             return newest;
         }
 
-        public async Task<IEnumerable<ProductsInputViewModel>> Trending()
+        public async Task<IEnumerable<ProductsOutputViewModel>> Trending()
         {
             var trending = await this.repositoryProduct.All()
-                .To<ProductsInputViewModel>()
+                .To<ProductsOutputViewModel>()
                 .OrderByDescending(x => x.SellCount)
                 .Take(6)
                 .ToListAsync();
 
             foreach (var image in trending.Select(x => x.Images))
             {
-                var data = new ImagesInputViewModel
+                var data = new ImagesOutputViewModel
                 {
-                    ImageUrl = trending.Select(a => a.Image).FirstOrDefault(),
+                    Url = trending.Select(a => a.Image).FirstOrDefault(),
                 };
 
                 if (!image.Contains(data))

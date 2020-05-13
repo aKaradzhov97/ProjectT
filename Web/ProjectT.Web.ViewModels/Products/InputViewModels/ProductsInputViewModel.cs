@@ -1,4 +1,4 @@
-﻿namespace ProjectT.Web.ViewModels.Products
+﻿namespace ProjectT.Web.ViewModels.Products.InputViewModels
 {
     using System;
     using System.Collections.Generic;

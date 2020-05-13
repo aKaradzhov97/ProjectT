@@ -4,11 +4,13 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using ProjectT.Data.Common.Repositories;
     using ProjectT.Data.Models;
     using ProjectT.Services.Mapping;
-    using ProjectT.Web.ViewModels.Products;
+    using ProjectT.Web.ViewModels.Products.InputViewModels;
+    using ProjectT.Web.ViewModels.Products.OutputViewModels;
 
     public class ProductsServices : IProductsServices
     {
@@ -23,9 +25,9 @@
             this.repositoryImage = repositoryImage;
         }
 
-        public async Task<IEnumerable<ProductsInputViewModel>> GetAllProducts()
+        public async Task<IEnumerable<ProductsOutputViewModel>> GetAllProducts()
         {
-            return await this.repositoryProduct.All().To<ProductsInputViewModel>().ToListAsync();
+            return await this.repositoryProduct.All().To<ProductsOutputViewModel>().ToListAsync();
         }
 
         public async Task<ProductsInputViewModel> CreateProduct(ProductsInputViewModel product)
@@ -50,7 +52,7 @@
                 {
                     var newImage = new Image
                     {
-                        ImageUrl = image.ImageUrl,
+                        ImageUrl = image.Url,
                         ProductId = newProduct.Id,
                     };
 
@@ -93,7 +95,7 @@
                             currentImage = new Image
                             {
                                 Id = image.Id,
-                                ImageUrl = image.ImageUrl,
+                                ImageUrl = image.Url,
                                 ProductId = id,
                             };
 

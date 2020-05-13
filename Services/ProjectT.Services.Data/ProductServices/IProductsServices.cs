@@ -4,11 +4,12 @@
     using System.Threading.Tasks;
 
     using ProjectT.Data.Models;
-    using ProjectT.Web.ViewModels.Products;
+    using ProjectT.Web.ViewModels.Products.InputViewModels;
+    using ProjectT.Web.ViewModels.Products.OutputViewModels;
 
     public interface IProductsServices
     {
-        Task<IEnumerable<ProductsInputViewModel>> GetAllProducts();
+        Task<IEnumerable<ProductsOutputViewModel>> GetAllProducts();
 
         Task<ProductsInputViewModel> CreateProduct(ProductsInputViewModel product);
 

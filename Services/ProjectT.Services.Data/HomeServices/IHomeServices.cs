@@ -5,11 +5,12 @@
 
     using ProjectT.Data.Models;
     using ProjectT.Web.ViewModels.Products;
+    using ProjectT.Web.ViewModels.Products.OutputViewModels;
 
     public interface IHomeServices
     {
-            Task<IEnumerable<ProductsInputViewModel>> Newest();
+            Task<IEnumerable<ProductsOutputViewModel>> Newest();
 
-            Task<IEnumerable<ProductsInputViewModel>> Trending();
+            Task<IEnumerable<ProductsOutputViewModel>> Trending();
     }
 }

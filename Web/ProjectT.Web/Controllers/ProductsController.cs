@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
-
-namespace ProjectT.Web.Controllers
+﻿namespace ProjectT.Web.Controllers
 {
     using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using ProjectT.Data.Models;
     using ProjectT.Services.Data.ProductServices;
-    using ProjectT.Web.ViewModels.Products;
+    using ProjectT.Web.ViewModels.Products.InputViewModels;
 
     [ApiController]
     [Route("api/products")]
