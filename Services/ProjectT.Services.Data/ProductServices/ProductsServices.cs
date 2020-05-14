@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
     using Microsoft.EntityFrameworkCore;
     using ProjectT.Data.Common.Repositories;
     using ProjectT.Data.Models;
@@ -30,8 +29,10 @@
             return await this.repositoryProduct.All().To<ProductsOutputViewModel>().ToListAsync();
         }
 
-        public async Task<ProductsInputViewModel> CreateProduct(ProductsInputViewModel product)
+        public async Task<ProductsOutputViewModel> CreateProduct(ProductsInputViewModel product)
         {
+            var size = this.CheckSize(product.Size);
+
             var newProduct = new Product
             {
                 Name = product.Name,
@@ -40,6 +41,7 @@
                 Price = product.Price,
                 Quantity = product.Quantity,
                 Created_On = DateTime.UtcNow,
+                Size = size,
                 SellCount = 0,
             };
 
@@ -61,10 +63,11 @@
                 }
             }
 
-            return await this.repositoryProduct.All().To<ProductsInputViewModel>().FirstOrDefaultAsync();
+            return await this.repositoryProduct.All().To<ProductsOutputViewModel>()
+                .FirstOrDefaultAsync(x => x.Id == newProduct.Id);
         }
 
-        public async Task<Product> EditProduct(string id, ProductsInputViewModel product)
+        public async Task<ProductsOutputViewModel> EditProduct(string id, ProductsInputViewModel product)
         {
             var currentProduct = await this.repositoryProduct.All()
                 .FirstOrDefaultAsync(x => x.Id == id);
@@ -81,6 +84,7 @@
                     Price = product.Price,
                     Quantity = product.Quantity,
                     Created_On = DateTime.UtcNow,
+                    Size = this.CheckSize(product.Size),
                     SellCount = product.SellCount,
                 };
 
@@ -110,13 +114,12 @@
             await this.repositoryProduct.AddAsync(currentProduct);
             await this.repositoryProduct.SaveChangesAsync();
 
-            return currentProduct;
+            return await this.repositoryProduct.All().To<ProductsOutputViewModel>()
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Product>> DeleteProduct(string id)
+        public async Task<IEnumerable<ProductsOutputViewModel>> DeleteProduct(string id)
         {
-            var currentProduct = await this.repositoryProduct.All().FirstOrDefaultAsync(x => x.Id == id);
-
             var currentImages = await this.repositoryImage.All().Where(x => x.ProductId == id).ToListAsync();
 
             if (currentImages != null)
@@ -128,13 +131,51 @@
                 }
             }
 
+            var currentProduct = await this.repositoryProduct.All().FirstOrDefaultAsync(x => x.Id == id);
+
             if (currentProduct != null)
             {
                 this.repositoryProduct.Delete(currentProduct);
                 await this.repositoryProduct.SaveChangesAsync();
             }
 
-            return await this.repositoryProduct.All().ToListAsync();
+            return await this.repositoryProduct.All().To<ProductsOutputViewModel>().ToListAsync();
+        }
+
+        private string CheckSize(string size)
+        {
+            if (string.IsNullOrWhiteSpace(size))
+            {
+                return "None";
+            }
+            if (size.ToLower() == "xs")
+            {
+                return "XS";
+            }
+            else if (size.ToLower() == "s")
+            {
+                return "S";
+            }
+            else if (size.ToLower() == "m")
+            {
+               return "M";
+            }
+            else if (size.ToLower() == "l")
+            {
+                return "L";
+            }
+            else if (size.ToLower() == "xl")
+            {
+                return "XL";
+            }
+            else if (size.ToLower() == "xxl")
+            {
+                return "XXL";
+            }
+            else
+            {
+                return "None";
+            }
         }
     }
 }

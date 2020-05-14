@@ -40,6 +40,9 @@
         [Required]
         public DateTime Created_On { get; set; }
 
+        [Required]
+        public string Size { get; set; }
+
         public int SellCount { get; set; }
 
         public virtual ICollection<Cart> Carts { get; set; }

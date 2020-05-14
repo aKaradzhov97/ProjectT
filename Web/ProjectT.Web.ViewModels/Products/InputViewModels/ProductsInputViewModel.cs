@@ -32,6 +32,8 @@
 
         public DateTime Created_On { get; set; }
 
+        public string Size { get; set; }
+
         public int SellCount { get; set; }
 
         public List<ImagesInputViewModel> Images { get; set; }

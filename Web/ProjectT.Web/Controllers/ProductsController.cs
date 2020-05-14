@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using ProjectT.CloudinaryHelper;
-
-namespace ProjectT.Web.Controllers
+﻿namespace ProjectT.Web.Controllers
 {
     using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using ProjectT.Data.Models;
