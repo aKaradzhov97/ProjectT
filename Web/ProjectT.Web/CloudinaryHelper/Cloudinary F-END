@@ -1,0 +1,10 @@
+﻿// Settings Cloudinary
+
+Frontend must implementing main directory with follow url:
+https://res.cloudinary.com/dyvnszqti/image/upload/
+
+Backend send data following:
+v1589439372/example-photo(s).jpg
+
+The result should be look like this:
+https://res.cloudinary.com/dyvnszqti/image/upload/v1589439372/sywuphodzocclefzdrmo.jpg

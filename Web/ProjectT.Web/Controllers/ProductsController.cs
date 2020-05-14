@@ -1,7 +1,9 @@
-﻿namespace ProjectT.Web.Controllers
+﻿using System.Collections.Generic;
+using ProjectT.CloudinaryHelper;
+
+namespace ProjectT.Web.Controllers
 {
     using System.Threading.Tasks;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using ProjectT.Data.Models;
@@ -34,6 +36,9 @@
         [HttpPost("create")]
         public async Task<ActionResult> Create(ProductsInputViewModel product)
         {
+            // ATTENTION That's call cloudinary
+            // var result = await CloudinaryExtension.UploadAsync(Cloudinary cloudinary,ICollection<IFormFile> files);
+            // FINISH WITH IMPORT FILE IN CLOUDINARY
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();

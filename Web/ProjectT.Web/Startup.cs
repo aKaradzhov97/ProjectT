@@ -1,3 +1,4 @@
+using CloudinaryDotNet;
 using ProjectT.Services.Data.ProductServices;
 
 namespace ProjectT
@@ -65,6 +66,18 @@ namespace ProjectT
             services.AddTransient<IHomeServices, HomeServices>();
             services.AddTransient<IUsersServices, UsersServices>();
             services.AddTransient<IProductsServices, ProductsServices>();
+
+            // Add Cloudinary Setups
+            Account account = new Account
+            (
+                this.configuration["Cloudinary:CloudName"],
+                this.configuration["Cloudinary:CloudKey"],
+                this.configuration["Cloudinary:CloudSecret"]
+            );
+
+            Cloudinary cloudinary = new Cloudinary(account);
+
+            services.AddSingleton(cloudinary);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
