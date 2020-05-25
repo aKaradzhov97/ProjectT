@@ -1,10 +1,14 @@
 ﻿namespace ProjectT.Web.Controllers
 {
     using System;
+    using System.Text;
+    using System.Text.Encodings.Web;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.WebUtilities;
     using ProjectT.Data.Models;
     using ProjectT.Services.Data.UserServices;
     using ProjectT.Web.ViewModels.Users;
@@ -16,18 +20,21 @@
         private readonly IUsersServices usersService;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IEmailSender emailSender;
 
         public UsersController(
             IUsersServices usersService,
             SignInManager<ApplicationUser> signInManager,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            IEmailSender emailSender)
         {
             this.usersService = usersService;
             this.signInManager = signInManager;
             this.userManager = userManager;
+            this.emailSender = emailSender;
         }
 
-        [Route("login")]
+        [HttpPost("login")]
         public async Task<ActionResult> Login(LoginInputViewModel login)
         {
             if (!this.ModelState.IsValid)
@@ -37,7 +44,7 @@
 
             // Sign in
             var userLogin = await this.signInManager
-                    .PasswordSignInAsync(login.Username, login.Password, true, false);
+                .PasswordSignInAsync(login.Username, login.Password, true, false);
 
             if (!userLogin.Succeeded)
             {
@@ -51,7 +58,7 @@
             return this.Ok(new {Message = "Login successful", user});
         }
 
-        [Route("register")]
+        [HttpPost("register")]
         public async Task<ActionResult> Register(RegisterInputViewModel register)
         {
             if (!this.ModelState.IsValid)
@@ -87,6 +94,67 @@
             // SignInAsync is for auto sign in
             await this.signInManager.SignInAsync(user, false);
             return this.CreatedAtAction("Login", new {Message = "User is created!", register});
+        }
+
+        [HttpPost("forgotpassword")]
+        public async Task<ActionResult> ForgotPassword(ForgotPasswordEmailInputViewModel email)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var user = await this.userManager.FindByEmailAsync(email.ToString());
+                if (user == null || !(await this.userManager.IsEmailConfirmedAsync(user)))
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    return this.RedirectToPage("./ForgotPasswordConfirmation");
+                }
+
+                var code = await this.userManager.GeneratePasswordResetTokenAsync(user);
+                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+
+                var callbackUrl = this.Url.Page(
+                    "api/auth/ResetPassword",
+                    pageHandler: null,
+                    values: new {area = "Identity", code},
+                    protocol: this.Request.Scheme);
+
+                await this.emailSender.SendEmailAsync(
+                    email.ToString(),
+                    "Reset Password",
+                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                return this.RedirectToPage("./ForgotPasswordConfirmation");
+            }
+
+            return this.BadRequest(new {Message = "Ooopppsss! Something wrong!"});
+        }
+
+        [HttpPost("resetpassword")]
+        public async Task<ActionResult> ResetPassword(ResetPasswordInputViewModel reset)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest("Ooopppsss! Something wrong!");
+            }
+
+            var user = await this.userManager.FindByEmailAsync(reset.Email);
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                return this.RedirectToPage("./ResetPasswordConfirmation");
+            }
+
+            var result = await this.userManager.ResetPasswordAsync(user, reset.Code, reset.Password);
+            if (result.Succeeded)
+            {
+                return this.RedirectToPage("./ResetPasswordConfirmation");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                this.ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return this.Ok();
         }
     }
 }
