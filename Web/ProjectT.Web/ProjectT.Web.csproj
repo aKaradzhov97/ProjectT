@@ -55,5 +55,12 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app" />
+    <Folder Include="ClientApp\src\app\modules\user\modules\account\components" />
+    <Folder Include="ClientApp\src\app\modules\user\modules\account\containers" />
+    <Folder Include="ClientApp\src\app\modules\user\modules\addresses\containers" />
+    <Folder Include="ClientApp\src\app\modules\user\modules\details\containers" />
+    <Folder Include="ClientApp\src\app\modules\user\modules\newsletters\containers" />
+    <Folder Include="ClientApp\src\app\modules\user\modules\orders\containers" />
+    <Folder Include="ClientApp\src\app\modules\user\modules\vouchers\containers" />
   </ItemGroup>
 </Project>

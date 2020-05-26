@@ -1,13 +1,13 @@
 // Decorators
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
 // Modules
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 // Guards
 
 // Components
-import {PanelComponent} from './containers/panel/panel.component';
+import { PanelComponent } from './containers/panel/panel.component';
 
 const ROUTES: Routes = [
   {
@@ -16,17 +16,20 @@ const ROUTES: Routes = [
   },
   {
     path: 'category',
-    loadChildren: () => import('./modules/category/category.module').then(m => m.CategoryModule)
+    loadChildren: () =>
+      import('./modules/category/category.module').then(
+        (m) => m.CategoryModule
+      ),
   },
   {
     path: 'product',
-    loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule)
+    loadChildren: () =>
+      import('./modules/product/product.module').then((m) => m.ProductModule),
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(ROUTES)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminRoutingModule {
-}
+export class AdminRoutingModule {}
