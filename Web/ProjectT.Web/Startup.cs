@@ -47,7 +47,7 @@ namespace ProjectT
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/api/auth/login";
-                options.ExpireTimeSpan = TimeSpan.FromDays(1);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(2);
             });
 
             services.AddControllers();
