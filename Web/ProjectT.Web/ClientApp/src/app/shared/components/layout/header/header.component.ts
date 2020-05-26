@@ -20,8 +20,6 @@ export class HeaderComponent implements OnInit {
 
   form: FormGroup;
 
-  isAuthenticated: boolean = this.authService.isLoggedIn();
-
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -36,5 +34,9 @@ export class HeaderComponent implements OnInit {
 
   onSubmit(): void {
     this.formSubmit.emit(this.form.value);
+  }
+
+  isAuthenticated(): boolean {
+    return this.authService.isLoggedIn();
   }
 }

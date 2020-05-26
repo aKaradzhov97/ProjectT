@@ -30,7 +30,7 @@
         <button
           class="d-flex justify-content-center align-items-center text-white"
           mat-icon-button
-          routerLink="/auth"
+          [routerLink]="isAuthenticated() ? '/user/account' : 'auth'"
         >
           <mat-icon>person</mat-icon>
         </button>
