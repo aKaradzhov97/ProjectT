@@ -49,14 +49,21 @@ namespace ProjectT.Web.Controllers
 
             if (!userLogin.Succeeded)
             {
-                return this.BadRequest(new {Message = "Login failed", login});
+                return this.BadRequest(new {Message = "Login failed!", login});
             }
 
             var currentUser = await this.userManager.FindByNameAsync(login.Username);
 
             var user = await this.usersService.GetInfo(currentUser.UserName);
 
-            return this.Ok(new {Message = "Login successful", user});
+            return this.Ok(new {Message = "Login successful!", user});
+        }
+
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await this.signInManager.SignOutAsync();
+            return this.Ok(new {Message = "Logout successful!"});
         }
 
         [HttpPost("register")]
