@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../../shared/shared.module';
 
 // Guards
 
@@ -18,9 +19,7 @@ import { MaterialModule } from '../material/material.module';
 import { UserService } from '../../core/services/user.service';
 
 // Components
-import { AuthLoginComponent } from './containers/auth-login/auth-login.component';
-import { AuthRegisterComponent } from './containers/auth-register/auth-register.component';
-import { AuthForgotPasswordComponent } from './containers/auth-forgot-password/auth-forgot-password.component';
+import { AuthContainerComponent } from './containers/auth/auth-container.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
@@ -30,9 +29,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    AuthLoginComponent,
-    AuthRegisterComponent,
-    AuthForgotPasswordComponent,
+    AuthContainerComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +38,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     MaterialModule,
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature(effects),
+    SharedModule,
   ],
   providers: [
     UserService,

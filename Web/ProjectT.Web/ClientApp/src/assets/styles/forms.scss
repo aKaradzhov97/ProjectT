@@ -1,5 +1,10 @@
-@import './backgrounds';
-@import './text';
+@import "./backgrounds";
+@import "./text";
+
+.auth-wrapper {
+  max-width: 30rem;
+  margin: 0 auto;
+}
 
 .form-label {
   width: 100%;

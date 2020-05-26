@@ -1,16 +1,38 @@
-<section class="t-container">
-  <h5>Login:</h5>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="form-label">
-      <mat-label>Username</mat-label>
-      <input type="text" matInput placeholder="Your username.." formControlName="username">
-    </mat-form-field>
-
-    <mat-form-field class="form-label">
-      <mat-label>Password</mat-label>
-      <input type="password" matInput placeholder="Your password.." formControlName="password">
-    </mat-form-field>
-
-    <button type="submit" mat-raised-button color="primary">Login!</button>
+<article>
+  <h4 class="text-center">Welcome back</h4>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-input
+      [form]="form"
+      [name]="'username'"
+      [label]="'Username'"
+      [placeholder]="'Your username..'"
+      [error]="'Field is required!'"
+    >
+    </app-input>
+    <app-input
+      [form]="form"
+      [name]="'password'"
+      [type]="'password'"
+      [label]="'Password'"
+      [placeholder]="'Your password..'"
+      [error]="'Field is required!'"
+    >
+    </app-input>
+    <button
+      class="w-100 mt-3 py-1"
+      type="submit"
+      mat-flat-button
+      color="primary"
+    >
+      Login
+    </button>
+    <section class="my-4 text-center">
+      <a
+        routerLink="/auth/forgot-password"
+        class="forgot-password-link text-dark font-weight-normal"
+      >
+        I don't remember my password!</a
+      >
+    </section>
   </form>
-</section>
+</article>

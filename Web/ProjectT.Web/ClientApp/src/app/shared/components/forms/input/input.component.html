@@ -1,15 +1,7 @@
-<mat-form-field [formGroup]="form" class="d-block">
+<mat-form-field [formGroup]="form" class="d-block" appearance="standard">
   <mat-label *ngIf="label">{{ label }}</mat-label>
   <input
-    *ngIf="isMaterial"
     matInput
-    #input
-    [formControlName]="name"
-    [type]="type"
-    [placeholder]="placeholder"
-  />
-  <input
-    *ngIf="!isMaterial"
     #input
     [formControlName]="name"
     [type]="type"

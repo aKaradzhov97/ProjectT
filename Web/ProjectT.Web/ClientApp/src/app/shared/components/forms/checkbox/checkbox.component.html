@@ -1,1 +1,6 @@
-<p>checkbox works!</p>
+<section [formGroup]="form" class="d-block">
+  <mat-checkbox [formControlName]="name" [value]="data.value">
+    <span>{{ data.text }}</span>
+  </mat-checkbox>
+  <mat-error [class.invisible]="!showError()"> {{ error }} </mat-error>
+</section>

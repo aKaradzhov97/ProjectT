@@ -20,6 +20,7 @@ import { CheckboxComponent } from './components/forms/checkbox/checkbox.componen
 import { ButtonComponent } from './components/forms/button/button.component';
 import { TextareaComponent } from './components/forms/textarea/textarea.component';
 import { SelectComponent } from './components/forms/select/select.component';
+import { RadioComponent } from './components/forms/radio/radio.component';
 
 // - Products
 
@@ -29,10 +30,11 @@ import { SelectComponent } from './components/forms/select/select.component';
     FooterComponent,
     SidenavComponent,
     InputComponent,
+    SelectComponent,
     CheckboxComponent,
     ButtonComponent,
     TextareaComponent,
-    SelectComponent,
+    RadioComponent,
   ],
   imports: [
     CommonModule,
@@ -47,6 +49,7 @@ import { SelectComponent } from './components/forms/select/select.component';
     SidenavComponent,
     InputComponent,
     SelectComponent,
+    CheckboxComponent,
   ],
 })
 export class SharedModule {}

@@ -1,0 +1,36 @@
+<section class="auth-wrapper">
+  <section class="pt-4">
+    <mat-accordion>
+      <mat-expansion-panel
+        [expanded]="step === 0"
+        (opened)="setStep(0)"
+        hideToggle
+      >
+        <mat-expansion-panel-header expandedHeight="0" collapsedHeight="*">
+          <button class="flex-grow-1 py-1" mat-flat-button color="primary">
+            Login
+          </button>
+        </mat-expansion-panel-header>
+
+        <section class="accordion-content">
+          <app-login (loginSubmit)="onLoginSubmit($event)"></app-login>
+        </section>
+      </mat-expansion-panel>
+      <mat-expansion-panel
+        [expanded]="step === 1"
+        (opened)="setStep(1)"
+        hideToggle
+      >
+        <mat-expansion-panel-header expandedHeight="0" collapsedHeight="*">
+          <button class="flex-grow-1 py-1" mat-flat-button color="accent">
+            Register
+          </button>
+        </mat-expansion-panel-header>
+
+        <section class="accordion-content">
+          <app-register (formSubmit)="onRegisterSubmit($event)"></app-register>
+        </section>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </section>
+</section>

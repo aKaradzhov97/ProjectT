@@ -1,8 +1,14 @@
 // Decorators and Lifehooks
-import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 // Forms
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,22 +17,20 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
+  form: FormGroup;
 
-  loginForm: FormGroup;
+  @Output() loginSubmit = new EventEmitter();
 
-  @Output() formSubmit = new EventEmitter();
-
-  constructor() { }
-
-  onSubmit(): void {
-    this.formSubmit.emit(this.loginForm.value);
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
+    this.form = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
   }
-}
 
+  onSubmit(): void {
+    this.loginSubmit.emit(this.form.value);
+  }
+}

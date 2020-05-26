@@ -1,31 +1,57 @@
-<section class="container">
-  <h5>Register:</h5>
-  <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="form-label">
-      <mat-label>Username</mat-label>
-      <input type="text" matInput placeholder="Your username.." formControlName="username">
-    </mat-form-field>
-
-    <mat-form-field class="form-label">
-      <mat-label>Password</mat-label>
-      <input type="password" matInput placeholder="Your password.." formControlName="password">
-    </mat-form-field>
-
-    <mat-form-field class="form-label">
-      <mat-label>Repeat password</mat-label>
-      <input type="password" matInput placeholder="Repeat password.." formControlName="repeatPassword">
-    </mat-form-field>
-
-    <mat-form-field class="form-label">
-      <mat-label>Email</mat-label>
-      <input type="email" matInput placeholder="Email.." formControlName="email">
-    </mat-form-field>
-
-    <mat-form-field class="form-label">
-      <mat-label>Phone number</mat-label>
-      <input type="text" matInput placeholder="Phone number.." formControlName="phone">
-    </mat-form-field>
-
-    <button type="submit" mat-raised-button color="primary">Register!</button>
+<article>
+  <h4 class="text-center">I'm new here</h4>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-input
+      [form]="form"
+      [name]="'username'"
+      [label]="'Username'"
+      [placeholder]="'Choose username..'"
+      [error]="'Field is required!'"
+    >
+    </app-input>
+    <app-input
+      [form]="form"
+      [name]="'password'"
+      [type]="'password'"
+      [label]="'Password'"
+      [placeholder]="'Your password..'"
+      [error]="'Field is required!'"
+    >
+    </app-input>
+    <app-input
+      [form]="form"
+      [name]="'repeatPassword'"
+      [type]="'password'"
+      [label]="'Repeat password'"
+      [placeholder]="'Repeat password..'"
+      [error]="'Field is required!'"
+    >
+    </app-input>
+    <app-input
+      [form]="form"
+      [name]="'email'"
+      [type]="'email'"
+      [label]="'Email'"
+      [placeholder]="'Your email..'"
+      [error]="'Field is required!'"
+    >
+    </app-input>
+    <app-input
+      [form]="form"
+      [name]="'phone'"
+      [type]="'text'"
+      [label]="'Phone'"
+      [placeholder]="'Your phone number..'"
+      [error]="'Field is required!'"
+    >
+    </app-input>
+    <button
+      class="w-100 mt-3 py-1"
+      type="submit"
+      mat-flat-button
+      color="accent"
+    >
+      Register
+    </button>
   </form>
-</section>
+</article>

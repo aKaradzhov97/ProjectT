@@ -1,0 +1,42 @@
+@import "./src/styles";
+
+app-auth-container {
+  h4 {
+    padding-top: to-rem(16px);
+  }
+
+  button {
+    font-size: to-rem(16px);
+    padding: to-rem(5px) 0;
+    border-radius: to-rem(50px);
+  }
+
+  .forgot-password-link {
+    text-decoration: underline !important;
+  }
+
+  // LOCAL Material override
+  .accordion-content {
+    margin-top: to-rem(32px);
+
+    @include media-breakpoint-md-up {
+      margin-top: to-rem(24px);
+    }
+  }
+
+  mat-expansion-panel-header.mat-expanded {
+    margin-top: to-rem(-32px);
+
+    @include media-breakpoint-md-up {
+      margin-top: to-rem(-24px);
+    }
+  }
+
+  .mat-expansion-panel {
+    .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled="true"]),
+    .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled="true"]),
+    .mat-expansion-panel-header:hover:not([aria-disabled="true"]) {
+      background: transparent !important;
+    }
+  }
+}

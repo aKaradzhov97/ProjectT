@@ -1,0 +1,73 @@
+/* MODAL STYLES */
+app-modal {
+  /* Modals are hidden by default. */
+  display: none;
+
+  .app-modal {
+    /* Modal container fixed across whole screen. */
+    position: fixed;
+    top: 50%;
+    right: 0;
+    left: 0;
+    transform: translateY(-50%);
+
+    /* Z-index must be higher than .app-modal-background. */
+    z-index: 1000;
+
+    /* Enables scrolling for tall modals. */
+    overflow: auto;
+
+    .app-modal-body {
+      background: #fff;
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 0 auto;
+      max-width: 60rem;
+    }
+
+    .app-modal-background {
+      /* Modal background fixed across whole screen. */
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+
+      /* Semi-transparent black.  */
+      background-color: #000;
+      opacity: 0.75;
+
+      /* Z-index must be below .app-modal and above everything else.  */
+      z-index: 900;
+    }
+  }
+}
+
+body.app-modal-open {
+  /* Body overflow is hidden to hide main scrollbar when modal window is open. */
+  overflow: hidden;
+}
+
+/*
+app-modal .app-modal .app-modal-body .modal-header {
+  position: relative;
+  border-bottom: 1px solid var(--main-color-border);
+}
+
+app-modal .app-modal .app-modal-body .modal-header h6 {
+  text-align: center;
+  margin: 0;
+  padding: 1rem 0;
+  background: var(--main-color-text);
+  color: #FFF;
+}
+
+app-modal .app-modal .app-modal-body .modal-header i {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+*/

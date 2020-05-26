@@ -17,7 +17,7 @@
 
             var products =
                 new List<(string Name, string Description,string Image, List<string> Images, decimal Price, int Quantity,
-                    int sellCount)>
+                    string size, int sellCount)>
                 {
                     (
                         "Mens T-Shirt",
@@ -31,6 +31,7 @@
                         },
                         22.50m,
                         10,
+                        "xs",
                         22
                     ),
                     (
@@ -45,6 +46,7 @@
                         },
                         33.50m,
                         10,
+                        "xs",
                         10
                     ),
                     (
@@ -60,6 +62,7 @@
                         },
                         47.59m,
                         20,
+                        "xs",
                         0
                     ),
                     (
@@ -75,6 +78,7 @@
                         },
                         44.79m,
                         20,
+                        "xs",
                         15
                     ),
                     (
@@ -90,6 +94,7 @@
                         },
                         19.89m,
                         20,
+                        "xs",
                         1
                     ),
                     (
@@ -104,6 +109,7 @@
                         },
                         119.89m,
                         20,
+                        "xs",
                         0
                     ),
                     (
@@ -118,6 +124,7 @@
                         },
                         9.89m,
                         200,
+                        "xs",
                         10
                     ),
                     (
@@ -133,6 +140,7 @@
                         },
                         9.89m,
                         200,
+                        "xs",
                         110
                     ),
                     (
@@ -148,6 +156,7 @@
                         },
                         9.89m,
                         180,
+                        "xs",
                         78
                     ),
                 };
@@ -162,6 +171,7 @@
                     Price = product.Price,
                     Quantity = product.Quantity,
                     Created_On = DateTime.UtcNow,
+                    Size = product.size,
                     SellCount = product.sellCount,
                 };
 

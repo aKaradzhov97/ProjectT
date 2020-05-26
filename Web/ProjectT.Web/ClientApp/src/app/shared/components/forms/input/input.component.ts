@@ -1,10 +1,11 @@
 // Decorators & Lifehooks
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   Input,
   ViewChild,
-  ElementRef,
-  AfterViewInit,
+  ViewEncapsulation,
 } from '@angular/core';
 
 // Forms
@@ -14,13 +15,12 @@ import { FormGroup } from '@angular/forms';
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class InputComponent implements AfterViewInit {
   @ViewChild('input') input: ElementRef;
 
   @Input() form: FormGroup = null;
-
-  @Input() isMaterial = true;
 
   @Input() type = 'text';
 
@@ -29,10 +29,6 @@ export class InputComponent implements AfterViewInit {
   @Input() label: string = null;
 
   @Input() placeholder: string = null;
-
-  @Input() required = false;
-
-  @Input() disabled = false;
 
   @Input() error: string;
 
@@ -44,9 +40,5 @@ export class InputComponent implements AfterViewInit {
     if (!!control && control.invalid && control.dirty) {
       control.markAsTouched();
     }
-  }
-
-  showError() {
-    return !!this.error;
   }
 }

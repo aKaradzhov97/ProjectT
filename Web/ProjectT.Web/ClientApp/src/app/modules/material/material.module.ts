@@ -9,9 +9,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // Constants
@@ -21,9 +22,10 @@ const MaterialComponents = [
   MatIconModule,
   MatToolbarModule,
   MatButtonModule,
-  MatGridListModule,
+  MatExpansionModule,
   MatInputModule,
   MatSelectModule,
+  MatCheckboxModule,
   MatSnackBarModule,
 ];
 

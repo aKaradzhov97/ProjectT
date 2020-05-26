@@ -29,13 +29,18 @@
       </app-select>
       <app-input
         [form]="form"
-        [isMaterial]="true"
         [name]="'title'"
         [label]="'Title'"
         [placeholder]="'Select a title'"
         [error]="'Cannot be empty!'"
       >
       </app-input>
+      <app-checkbox
+      [form]="form"
+      [name]="'express'"
+      [data]="deliveryData"
+      [error]="'Please confirm the delivery!'">
+      </app-checkbox>
       <section class="d-flex">
         <button
           class="flex-grow-1 py-2 mr-3"

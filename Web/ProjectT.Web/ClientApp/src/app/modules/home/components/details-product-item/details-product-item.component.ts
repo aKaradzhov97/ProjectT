@@ -14,7 +14,14 @@ import { Product } from '../../../../shared/models/product.model';
 import { Image } from '@ks89/angular-modal-gallery';
 
 // Forms
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
+import { F } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-details-product-item',
@@ -33,6 +40,22 @@ export class DetailsProductItemComponent implements OnInit {
   form: FormGroup;
 
   images: Image[] = [];
+
+  deliveryData = {
+    text: 'Express',
+    value: true,
+  };
+
+  dataArr = [
+    {
+      text: 'Pizza',
+      value: false,
+    },
+    {
+      text: 'Pasta',
+      value: true,
+    },
+  ];
 
   sizes = [
     {
@@ -57,7 +80,7 @@ export class DetailsProductItemComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.initImages();
@@ -74,12 +97,14 @@ export class DetailsProductItemComponent implements OnInit {
       ...this.form.value,
     };
     this.formSubmit.emit(this.form.value);
+    console.log(this.form.value);
   }
 
   initForm(): void {
     this.form = new FormGroup({
       size: new FormControl('', Validators.required),
       title: new FormControl('', Validators.required),
+      express: new FormControl('', Validators.requiredTrue),
     });
   }
 
