@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using ProjectT.Data.Common.Repositories;
     using ProjectT.Data.Models;
@@ -93,6 +94,7 @@
                     foreach (var image in product.Images)
                     {
                         var currentImage = await this.repositoryImage.All().FirstOrDefaultAsync(x => x.ProductId == id);
+
                         if (currentImage != null)
                         {
                             this.repositoryImage.Delete(currentImage);
@@ -148,6 +150,7 @@
             {
                 return "None";
             }
+
             if (size.ToLower() == "xs")
             {
                 return "XS";
@@ -158,7 +161,7 @@
             }
             else if (size.ToLower() == "m")
             {
-               return "M";
+                return "M";
             }
             else if (size.ToLower() == "l")
             {

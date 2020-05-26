@@ -24,4 +24,9 @@
     <ProjectReference Include="..\..\Services\ProjectT.Services.Mapping\ProjectT.Services.Mapping.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Users\LoginInputViewModel.cs" />
+    <Compile Remove="Users\RegisterInputViewModel.cs" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace ProjectT.Services.Data.UserServices
+﻿using ProjectT.Web.ViewModels.Users.OutputViewModels;
+
+namespace ProjectT.Services.Data.UserServices
 {
     using System.Threading.Tasks;
 
@@ -7,7 +9,6 @@
     using ProjectT.Common;
     using ProjectT.Data.Common.Repositories;
     using ProjectT.Data.Models;
-    using ProjectT.Web.ViewModels.Users;
 
     public class UsersServices : IUsersServices
     {

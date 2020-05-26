@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ProjectT.Web.ViewModels.Users
+﻿namespace ProjectT.Web.ViewModels.Users.InputViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class ResetPasswordInputViewModel
     {
         [Required]

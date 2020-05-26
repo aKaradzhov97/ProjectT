@@ -1,4 +1,4 @@
-﻿namespace ProjectT.Web.ViewModels.Users
+﻿namespace ProjectT.Web.ViewModels.Users.OutputViewModels
 {
     public class UserViewModel
     {

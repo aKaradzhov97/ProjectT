@@ -1,17 +1,18 @@
-﻿namespace ProjectT.Web.Controllers
+﻿using ProjectT.Web.ViewModels.Users.InputViewModels;
+using ProjectT.Web.ViewModels.Users.OutputViewModels;
+
+namespace ProjectT.Web.Controllers
 {
     using System;
     using System.Text;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.WebUtilities;
     using ProjectT.Data.Models;
     using ProjectT.Services.Data.UserServices;
-    using ProjectT.Web.ViewModels.Users;
 
     [ApiController]
     [Route("api/auth")]
@@ -76,7 +77,7 @@
                 return this.BadRequest(new {Message = "Email is already exists!", register});
             }
 
-            var user = new ApplicationUser
+            var newUser = new ApplicationUser
             {
                 UserName = register.Username,
                 Email = register.Email,
@@ -84,7 +85,14 @@
                 CreatedOn = DateTime.UtcNow,
             };
 
-            var data = await this.userManager.CreateAsync(user, register.Password);
+            var data = await this.userManager.CreateAsync(newUser, register.Password);
+
+            var user = new UserViewModel
+            {
+                Username = register.Username,
+                Email = register.Email,
+                Phone = register.Phone,
+            };
 
             if (!data.Succeeded)
             {
@@ -92,8 +100,9 @@
             }
 
             // SignInAsync is for auto sign in
-            await this.signInManager.SignInAsync(user, false);
-            return this.CreatedAtAction("Login", new {Message = "User is created!", register});
+            // await this.signInManager.SignInAsync(user, false);
+
+            return this.CreatedAtAction("Login", new {Message = "User is created!", user});
         }
 
         [HttpPost("forgotpassword")]
