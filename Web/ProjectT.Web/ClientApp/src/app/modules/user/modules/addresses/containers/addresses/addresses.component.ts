@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+// Decorators & Lifehooks
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-addresses',
   templateUrl: './addresses.component.html',
-  styleUrls: ['./addresses.component.scss']
+  styleUrls: ['./addresses.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddressesComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

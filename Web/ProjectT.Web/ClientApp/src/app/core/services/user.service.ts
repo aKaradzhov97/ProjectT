@@ -18,6 +18,7 @@ const BASE_URL = API_CONSTANTS.BASE_URL + API_CONSTANTS.AUTH_ENDPOINT;
 
 const LOGIN_URL = `${BASE_URL}/login`;
 const REGISTER_URL = `${BASE_URL}/register`;
+const LOGOUT_URL = `${BASE_URL}/logout`;
 
 @Injectable()
 export class UserService {
@@ -32,6 +33,12 @@ export class UserService {
   register(payload: User): Observable<User> {
     return this.http
       .post<User>(REGISTER_URL, payload)
+      .pipe(catchError((error: any) => Observable.throw(error.json())));
+  }
+
+  logout(): Observable<any> {
+    return this.http
+      .post<any>(LOGOUT_URL, {})
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 }

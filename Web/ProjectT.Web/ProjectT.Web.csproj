@@ -62,5 +62,6 @@
     <Folder Include="ClientApp\src\app\modules\user\modules\newsletters\containers" />
     <Folder Include="ClientApp\src\app\modules\user\modules\orders\containers" />
     <Folder Include="ClientApp\src\app\modules\user\modules\vouchers\containers" />
+    <Folder Include="ClientApp\src\app\modules\user\shared\components" />
   </ItemGroup>
 </Project>

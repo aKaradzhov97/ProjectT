@@ -16,12 +16,13 @@ import { MaterialModule } from '../material/material.module';
 
 // Services
 import { UserService } from '../../core/services/user.service';
-import { UserAccountComponent } from './containers/user-account/user-account.component';
 
 // Components
+import { UserAccountComponent } from './containers/user-account/user-account.component';
+import { UserSidenavComponent } from './components/user-sidenav/user-sidenav.component';
 
 @NgModule({
-  declarations: [UserAccountComponent],
+  declarations: [UserAccountComponent, UserSidenavComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

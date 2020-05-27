@@ -1,0 +1,13 @@
+@import "./src/styles";
+
+button {
+  border-radius: 0;
+}
+
+a.bg-primary:hover,
+a.bg-primary:focus,
+button.bg-primary:hover,
+button.bg-primary:focus {
+  outline: none;
+  background: $bg-accent !important;
+}

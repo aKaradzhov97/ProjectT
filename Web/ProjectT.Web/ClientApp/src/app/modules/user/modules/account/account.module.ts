@@ -20,6 +20,7 @@ import { UserService } from '../../../../core/services/user.service';
 // Components
 import { AccountComponent } from './containers/account/account.component';
 
+
 @NgModule({
   declarations: [AccountComponent],
   imports: [

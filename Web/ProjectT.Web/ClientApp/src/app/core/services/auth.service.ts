@@ -15,7 +15,6 @@ export class AuthService {
   private user: User = null;
 
   saveSession(user): void {
-    console.log(user);
     this.user = user;
   }
 

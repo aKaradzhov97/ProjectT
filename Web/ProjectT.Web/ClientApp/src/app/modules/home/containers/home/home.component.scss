@@ -1,14 +1,28 @@
 @import "./src/styles";
 
-.bg-img {
-  .inner {
-    width: 100%;
-    height: to-rem(500px);
+:host {
+  > section {
+    margin: to-rem(50px) auto;
+  }
 
-    img {
+  .bg-img {
+    .inner {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: to-rem(500px);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .headline {
+    margin-bottom: to-rem(30px);
+
+    h3 {
+      margin: 0;
     }
   }
 }

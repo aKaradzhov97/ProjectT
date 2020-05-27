@@ -1,14 +1,27 @@
-<section class="wrapper t-container">
-  <section class="bg-img">
-    <article class="inner">
-      <img
-        src="https://static.nike.com/a/images/f_auto/dpr_2.0/w_1407,c_limit/8ce2ea6b-21a2-4edf-bdf6-9f1ebded317b/nike-official-site.jpg"
-        alt="Background image"
-      />
-    </article>
-  </section>
-  <h3>Trending products</h3>
-  <app-products [products]="trendingProducts$ | async"></app-products>
-  <h3>Newest products</h3>
+<section class="bg-img mt-0">
+  <article class="inner">
+    <img src="assets/bg-img.webp" alt="Background image" />
+  </article>
+</section>
+
+<section class="t-container wrapper">
+  <article class="headline">
+    <h3 class="text-muted">Everyone’s talking about</h3>
+    <h3 class="font-weight-bold">Newest products</h3>
+  </article>
   <app-products [products]="newestProducts$ | async"></app-products>
+</section>
+
+<section class="bg-img">
+  <article class="inner">
+    <img src="assets/bottom-bg-desktop.jpg" alt="Background image" />
+  </article>
+</section>
+
+<section class="t-container wrapper">
+  <article class="headline">
+    <h3 class="text-muted">Embrace yourself</h3>
+    <h3 class="font-weight-bold">Today’s outfit inspiration</h3>
+  </article>
+  <app-products [products]="trendingProducts$ | async"></app-products>
 </section>

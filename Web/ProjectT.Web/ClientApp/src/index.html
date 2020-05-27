@@ -6,16 +6,117 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Open+Sans:400,700"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+
+    <!-- Loading page styles -->
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Open+Sans:400,700");
+      @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+      html {
+        font-size: 10px;
+      }
+
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+
+      /*
+         app-loading has flex: 1,
+         because the footer is stuck down always on the page using flexbox
+      */
+
+      .app-loading {
+        flex: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .app-loading h1 {
+        font-size: 2rem;
+        font-weight: 300;
+        font-family: "Montserrat", sans-serif;
+        letter-spacing: 15px;
+        text-transform: uppercase;
+        color: #444444;
+        transform: translateY(-325%);
+      }
+
+      .app-loading .logo {
+        height: 10rem;
+        width: 10rem;
+        transform-origin: center center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+
+      .app-loading .logo img {
+        width: 100%;
+        animation: pulse 1.25s ease-out infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(0.975);
+        }
+
+        70% {
+          transform: scale(1);
+        }
+
+        100% {
+          transform: scale(0.975);
+        }
+      }
+
+      /* RESPONSIVE */
+
+      @media screen and (min-width: 500px) {
+        html {
+          font-size: 12px;
+        }
+      }
+
+      @media screen and (min-width: 800px) {
+        html {
+          font-size: 14px;
+        }
+      }
+
+      @media screen and (min-width: 1300px) {
+        html {
+          font-size: 16px;
+        }
+      }
+
+      @media screen and (min-width: 1800px) {
+        html {
+          font-size: 18px;
+        }
+      }
+    </style>
+    <!-- END of Loading page styles -->
   </head>
   <body>
-    <app-root></app-root>
+    <app-root>
+      <div class="app-loading">
+        <h1>PROJECT</h1>
+        <div class="logo">
+          <img
+            src="https://www.pngkit.com/png/full/5-57890_wings-tattoos-clipart-transparent-background-transparent-background-cool.png"
+            alt="Logo"
+          />
+        </div>
+      </div>
+    </app-root>
   </body>
 </html>

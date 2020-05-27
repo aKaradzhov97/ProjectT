@@ -1,0 +1,11 @@
+<nav>
+  <button
+    *ngFor="let route of routes"
+    mat-button
+    [routerLink]="route.path"
+    class="w-100 text-left bg-primary text-white py-1 px-3"
+    routerLinkActive="bg-accent"
+  >
+    {{ route.label }}
+  </button>
+</nav>
