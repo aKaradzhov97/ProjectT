@@ -41,9 +41,12 @@ export class SuccessInterceptor implements HttpInterceptor {
           }
         }
 
+        if (event instanceof HttpResponse && request.url.endsWith('logout')) {
+          this.authService.clearSession();
+        }
+
         if (event instanceof HttpResponse && !!event.body.user) {
           this.authService.saveSession(event.body.user);
-          this.authService.isUserLogged.next(true);
 
           console.log('Success! ' + event.body.message);
         }
