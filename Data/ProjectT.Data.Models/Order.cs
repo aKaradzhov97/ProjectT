@@ -26,8 +26,8 @@
         [MaxLength(200)]
         public string Address { get; set; }
 
-        [Range(4, 6)]
-        public int Post_Code { get; set; }
+        [MaxLength(6)]
+        public string Post_Code { get; set; }
 
         [Required]
         [MaxLength(100)]

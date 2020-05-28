@@ -36,7 +36,7 @@ namespace ProjectT.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
-        
+
         public virtual ICollection<Cart> Carts { get; set; }
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }

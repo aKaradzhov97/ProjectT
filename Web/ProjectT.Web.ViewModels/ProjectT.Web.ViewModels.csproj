@@ -29,4 +29,9 @@
     <Compile Remove="Users\RegisterInputViewModel.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Categories\InputViewModels" />
+    <Folder Include="Categories\OutputViewModels" />
+  </ItemGroup>
+
 </Project>
