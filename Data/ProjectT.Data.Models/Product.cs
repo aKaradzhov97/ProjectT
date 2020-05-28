@@ -45,6 +45,10 @@
 
         public int SellCount { get; set; }
 
+        public virtual SubCategory SubCategory { get; set; }
+
+        public virtual Category Category { get; set; }
+
         public virtual ICollection<Cart> Carts { get; set; }
 
         public virtual ICollection<Inventory> Inventories { get; set; }

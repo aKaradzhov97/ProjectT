@@ -10,6 +10,7 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.SubCategories = new HashSet<SubCategory>();
+            this.Products = new HashSet<Product>();
         }
 
         [Key]
@@ -22,5 +23,7 @@
         public DateTime Created_On { get; set; }
 
         public virtual ICollection<SubCategory> SubCategories { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

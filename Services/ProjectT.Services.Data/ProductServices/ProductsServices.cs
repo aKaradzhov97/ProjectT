@@ -144,6 +144,26 @@
             return await this.repositoryProduct.All().To<ProductsOutputViewModel>().ToListAsync();
         }
 
+        public async Task<ICollection<ProductsOutputViewModel>> GetProductsByCategory()
+        {
+            var products = await this.repositoryProduct.All()
+                .Where(x => x.Category.Id == "44d3bdbf-e4e7-4af4-b065-935b40067ac9")
+                .To<ProductsOutputViewModel>()
+                .ToListAsync();
+
+            return products;
+        }
+
+        public async Task<ICollection<ProductsOutputViewModel>> GetProductsBySubCategory()
+        {
+            var products = await this.repositoryProduct.All()
+                .Where(x => x.SubCategory.Id == "22e7aef3-f4e7-42e2-9136-c84139251280")
+                .To<ProductsOutputViewModel>()
+                .ToListAsync();
+
+            return products;
+        }
+
         private string CheckSize(string size)
         {
             if (string.IsNullOrWhiteSpace(size))

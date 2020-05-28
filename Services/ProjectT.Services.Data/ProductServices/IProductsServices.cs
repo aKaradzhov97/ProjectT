@@ -15,5 +15,9 @@
         Task<ProductsOutputViewModel> EditProduct(string id, ProductsInputViewModel product);
 
         Task<IEnumerable<ProductsOutputViewModel>> DeleteProduct(string id);
+
+        Task<ICollection<ProductsOutputViewModel>> GetProductsByCategory();
+
+        Task<ICollection<ProductsOutputViewModel>> GetProductsBySubCategory();
     }
 }
