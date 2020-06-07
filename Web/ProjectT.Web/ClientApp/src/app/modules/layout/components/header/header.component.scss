@@ -1,0 +1,53 @@
+@import "./src/styles";
+
+:host {
+  header {
+    -webkit-box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.075);
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.075);
+    position: relative;
+    z-index: 2;
+    /* FOR STICKY HEADER
+  position: sticky;
+  top: 0;
+  */
+  }
+
+  .site-branding {
+    a {
+      font-size: 1.6rem;
+      letter-spacing: 0.25rem;
+    }
+  }
+
+  .nav-main.center {
+    flex: 1;
+  }
+
+  ul {
+    a {
+      margin: 0 0.75rem;
+      transition: 0.15s;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.5rem 0;
+    cursor: pointer;
+
+    &:not(:first-of-type) {
+      margin-left: 0.5rem;
+    }
+  }
+
+  @include media-breakpoint-sm-down {
+    ul > li > a {
+      display: none;
+    }
+  }
+}

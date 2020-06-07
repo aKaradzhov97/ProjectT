@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewslettersRoutingModule } from "./newsletters-routing.module";
 import { MaterialModule } from '../../../material/material.module';
+import { UserSharedModule } from '../../shared/user-shared.module';
 
 // Guards
 
@@ -27,6 +28,7 @@ import { NewslettersComponent } from './containers/newsletters/newsletters.compo
     ReactiveFormsModule,
     NewslettersRoutingModule,
     MaterialModule,
+    UserSharedModule,
     // StoreModule.forFeature('auth', reducers),
     // EffectsModule.forFeature(effects),
   ],

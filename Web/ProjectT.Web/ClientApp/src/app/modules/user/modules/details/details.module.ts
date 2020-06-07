@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetailsRoutingModule } from './details-routing.module';
 import { MaterialModule } from '../../../material/material.module';
+import { UserSharedModule } from "../../shared/user-shared.module";
 
 // Guards
 
@@ -27,6 +28,7 @@ import { DetailsComponent } from './containers/details/details.component';
     ReactiveFormsModule,
     DetailsRoutingModule,
     MaterialModule,
+    UserSharedModule,
     // StoreModule.forFeature('auth', reducers),
     // EffectsModule.forFeature(effects),
   ],

@@ -1,12 +1,17 @@
-<a routerLink="/details/{{product.id}}" class="product-item">
-  <section class="image-container">
-    <img class="image" [src]="product.image" alt="Photo of a product">
+<article class="product-item">
+  <section class="badges-top">
+    <app-wished-counter [wishCount]="300"></app-wished-counter>
   </section>
-  <section class="product-main-info">
-    <h6>{{product.name}}</h6>
-    <h6>{{product.price}} €</h6>
-  </section>
-  <section class="product-more-info">
-    <p>{{product.description}}</p>
-  </section>
-</a>
+  <a routerLink="/details/{{ product.id }}">
+    <section class="image-container">
+      <img class="image" [src]="product.image" alt="Photo of a product" />
+    </section>
+    <section class="product-main-info">
+      <h6>{{ product.name }}</h6>
+      <h6>{{ product.price }} €</h6>
+    </section>
+    <section class="product-more-info">
+      <p class="p-0">{{ product.description }}</p>
+    </section>
+  </a>
+</article>

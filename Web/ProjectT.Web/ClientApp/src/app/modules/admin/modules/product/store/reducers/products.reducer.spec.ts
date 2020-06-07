@@ -31,21 +31,25 @@ describe('ProductsReducer', () => {
         {
           id: '1',
           name: 'Productica',
-          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+          image:
+            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
           description: 'Awesome description here!',
           price: 210,
           quantity: 2,
           created_on: '2020-04-24T13:06:49.517Z',
+          images: [],
         },
         {
           id: '2',
           name: 'Productica 2',
-          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+          image:
+            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
           description: 'amazing description here!',
           price: 111,
           quantity: 2,
           created_on: '2010-04-24T13:06:49.517Z',
-        }
+          images: [],
+        },
       ];
       const entities = {
         1: products[0],
@@ -87,30 +91,36 @@ describe('ProductsReducer', () => {
         {
           id: '1',
           name: 'Productica',
-          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+          image:
+            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
           description: 'Awesome description here!',
           price: 210,
           quantity: 2,
           created_on: '2020-04-24T13:06:49.517Z',
+          images: [],
         },
         {
           id: '2',
           name: 'Productica 2',
-          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+          image:
+            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
           description: 'amazing description here!',
           price: 111,
           quantity: 2,
           created_on: '2010-04-24T13:06:49.517Z',
-        }
+          images: [],
+        },
       ];
       const newProduct: Product = {
         id: '3',
         name: 'Productica 3',
-        image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+        image:
+          'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
         description: 'NEW PRODUCT',
         price: 500,
         quantity: 2,
         created_on: '2020-04-25T13:06:49.517Z',
+        images: [],
       };
       const entities = {
         1: products[0],
@@ -132,30 +142,36 @@ describe('ProductsReducer', () => {
         {
           id: '1',
           name: 'Productica',
-          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+          image:
+            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
           description: 'Awesome description here!',
           price: 210,
           quantity: 2,
           created_on: '2020-04-24T13:06:49.517Z',
+          images: [],
         },
         {
           id: '2',
           name: 'Productica 2',
-          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+          image:
+            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
           description: 'amazing description here!',
           price: 111,
           quantity: 2,
           created_on: '2010-04-24T13:06:49.517Z',
-        }
+          images: [],
+        },
       ];
       const updatedProduct: Product = {
         id: '2',
         name: 'Productica 2',
-        image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+        image:
+          'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
         description: 'UPDATED PRODUCT',
         price: 500,
         quantity: 2,
         created_on: '2020-04-25T13:06:49.517Z',
+        images: [],
       };
       const entities = {
         1: products[0],
@@ -177,21 +193,25 @@ describe('ProductsReducer', () => {
         {
           id: '1',
           name: 'Productica',
-          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+          image:
+            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
           description: 'Awesome description here!',
           price: 210,
           quantity: 2,
           created_on: '2020-04-24T13:06:49.517Z',
+          images: [],
         },
         {
           id: '2',
           name: 'Productica 2',
-          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+          image:
+            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
           description: 'amazing description here!',
           price: 111,
           quantity: 2,
           created_on: '2010-04-24T13:06:49.517Z',
-        }
+          images: [],
+        },
       ];
       const entities = {
         1: products[0],
@@ -208,28 +228,32 @@ describe('ProductsReducer', () => {
   });
 });
 
-fdescribe('ProductsReducer Selectors', () => {
+describe('ProductsReducer Selectors', () => {
   describe('getProductsEntities', () => {
     it('should return .entities', () => {
       const products: Product[] = [
         {
           id: '1',
           name: 'Productica',
-          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+          image:
+            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
           description: 'Awesome description here!',
           price: 210,
           quantity: 2,
           created_on: '2020-04-24T13:06:49.517Z',
+          images: [],
         },
         {
           id: '2',
           name: 'Productica 2',
-          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
+          image:
+            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
           description: 'amazing description here!',
           price: 111,
           quantity: 2,
           created_on: '2010-04-24T13:06:49.517Z',
-        }
+          images: [],
+        },
       ];
       const entities: { [key: string]: Product } = {
         1: products[0],

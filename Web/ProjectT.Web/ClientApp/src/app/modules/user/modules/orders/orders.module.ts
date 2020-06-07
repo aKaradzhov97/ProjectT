@@ -9,8 +9,9 @@ import { EffectsModule } from '@ngrx/effects';
 // Modules
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { OrdersRoutingModule } from "./orders-routing.module";
+import { OrdersRoutingModule } from './orders-routing.module';
 import { MaterialModule } from '../../../material/material.module';
+import { UserSharedModule } from '../../shared/user-shared.module';
 
 // Guards
 
@@ -27,6 +28,7 @@ import { OrdersComponent } from './containers/orders/orders.component';
     ReactiveFormsModule,
     OrdersRoutingModule,
     MaterialModule,
+    UserSharedModule,
     // StoreModule.forFeature('auth', reducers),
     // EffectsModule.forFeature(effects),
   ],

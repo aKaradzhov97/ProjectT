@@ -1,17 +1,6 @@
 @import "./src/styles";
 
 app-details-product-item {
-  > .t-container {
-    display: grid;
-    grid-gap: to-rem(16px);
-    grid-template-columns: repeat(1, 1fr);
-
-    @include media-breakpoint-md-up() {
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: to-rem(48px);
-    }
-  }
-
   .nav-left,
   .nav-right {
     z-index: 1;
@@ -25,7 +14,7 @@ app-details-product-item {
 
   .current-figure:after {
     display: block;
-    content: '';
+    content: "";
     padding-top: 100%;
   }
 

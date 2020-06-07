@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountRoutingModule } from './account-routing.module';
 import { MaterialModule } from '../../../material/material.module';
+import { UserSharedModule } from '../../shared/user-shared.module';
 
 // Guards
 
@@ -20,7 +21,6 @@ import { UserService } from '../../../../core/services/user.service';
 // Components
 import { AccountComponent } from './containers/account/account.component';
 
-
 @NgModule({
   declarations: [AccountComponent],
   imports: [
@@ -28,6 +28,7 @@ import { AccountComponent } from './containers/account/account.component';
     ReactiveFormsModule,
     AccountRoutingModule,
     MaterialModule,
+    UserSharedModule,
     // StoreModule.forFeature('auth', reducers),
     // EffectsModule.forFeature(effects),
   ],

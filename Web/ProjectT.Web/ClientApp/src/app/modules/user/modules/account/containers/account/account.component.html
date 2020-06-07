@@ -1,2 +1,17 @@
-<p>ACCOUNT works!</p>
-<button class="p-5" (click)="logout()">LOGOUT</button>
+<app-user-account-headline
+  [title]="'Hello ' + user.username + '!'"
+  [subtitle]="
+    'Welcome to your private corner! You can manage your orders, returns and\n' +
+    '    account info right here.'
+  "
+></app-user-account-headline>
+<app-user-account-shopping-bag></app-user-account-shopping-bag>
+<section class="mt-4 text-center">
+  <h6>You are all caught up!</h6>
+  <p class="p-0 mb-3">
+    When we have relevant updates, you will find them here.
+  </p>
+  <button mat-button class="bg-black text-white">
+    Continue shopping
+  </button>
+</section>

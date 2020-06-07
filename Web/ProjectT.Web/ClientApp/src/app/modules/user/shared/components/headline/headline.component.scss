@@ -1,0 +1,9 @@
+@import "./src/styles";
+
+:host {
+  display: block;
+
+  h1 {
+    font-size: to-rem(24px);
+  }
+}

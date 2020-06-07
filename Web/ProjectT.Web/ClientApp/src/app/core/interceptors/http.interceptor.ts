@@ -13,7 +13,7 @@ import {
 } from '@angular/common/http';
 
 // Services
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '@services/auth.service';
 
 @Injectable()
 export class HTTPInterceptor implements HttpInterceptor {

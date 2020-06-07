@@ -1,0 +1,22 @@
+@import "./src/styles";
+
+app-wished-counter {
+  display: block;
+  border-radius: to-rem(30px);
+  background-color: $bg-white;
+  font-size: to-rem(14px);
+
+  & > span {
+    padding: to-rem(1px) to-rem(7px) to-rem(1px) to-rem(10px);
+  }
+
+  button.mat-icon-button {
+    width: to-rem(30px);
+    height: to-rem(30px);
+    line-height: to-rem(20px);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

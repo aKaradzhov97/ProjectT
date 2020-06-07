@@ -9,8 +9,9 @@ import 'mousetrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './shared/shared.module';
-import { MaterialModule } from './modules/material/material.module';
+import { LayoutModule } from '@layout/layout.module';
+import { SharedModule } from '@shared/shared.module';
+import { MaterialModule } from '@material/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { EffectsModule } from '@ngrx/effects';
@@ -32,11 +33,14 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 // Components
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 
+// Services
+import { NotificationService } from '@services/notification.service';
+
+// Others
+import { environment } from '../environments/environment';
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { NotificationService } from './core/services/notification.service';
 
 export const metaReducers: MetaReducer<any>[] = [];
 
@@ -48,6 +52,7 @@ export const metaReducers: MetaReducer<any>[] = [];
     AppRoutingModule,
     HttpClientModule,
     LoadingBarHttpClientModule,
+    LayoutModule,
     SharedModule,
     MaterialModule,
     StoreModule.forRoot(reducers, { metaReducers }),

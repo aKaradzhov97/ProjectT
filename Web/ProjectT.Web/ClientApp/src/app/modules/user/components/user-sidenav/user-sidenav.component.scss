@@ -4,10 +4,8 @@ button {
   border-radius: 0;
 }
 
-a.bg-primary:hover,
-a.bg-primary:focus,
-button.bg-primary:hover,
-button.bg-primary:focus {
+a.text-dark:hover,
+a.text-dark:focus {
   outline: none;
-  background: $bg-accent !important;
+  color: $text-accent !important;
 }

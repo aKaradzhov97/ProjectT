@@ -1,8 +1,13 @@
 // Decorators & Lifehooks
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 
 // Models
-import {Product} from '../../../../shared/models/product.model';
+import { Product } from '../../../../shared/models/product.model';
 
 @Component({
   selector: 'app-products-list-item',
@@ -13,10 +18,7 @@ import {Product} from '../../../../shared/models/product.model';
 export class ProductsListItemComponent implements OnInit {
   @Input() product: Product = null;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
