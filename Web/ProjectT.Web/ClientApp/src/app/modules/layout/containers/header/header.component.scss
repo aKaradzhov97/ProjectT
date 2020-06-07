@@ -24,15 +24,6 @@
     flex: 1;
   }
 
-  ul {
-    a {
-      margin: 0 0.75rem;
-      transition: 0.15s;
-      display: inline-block;
-      text-align: center;
-    }
-  }
-
   button {
     background: transparent;
     border: none;
@@ -42,12 +33,6 @@
 
     &:not(:first-of-type) {
       margin-left: 0.5rem;
-    }
-  }
-
-  @include media-breakpoint-sm-down {
-    ul > li > a {
-      display: none;
     }
   }
 }

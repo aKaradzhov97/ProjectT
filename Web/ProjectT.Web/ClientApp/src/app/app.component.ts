@@ -1,15 +1,19 @@
 // Decorators & Lifehooks
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Models
-import { Category } from './shared/models/category.model';
+import { Category } from '@shared/models/category.model';
+import { Store } from '@ngrx/store';
+import * as fromStore from './store';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  navigation$ = null;
+
   loadingBarColor = `#ff4081`;
   loadingBarHeight = 8;
   loadingSpinnerShown = false;
@@ -45,4 +49,10 @@ export class AppComponent {
       subcategories: [],
     },
   ];
+
+  constructor(private store: Store<fromStore.NavigationState>) {}
+
+  ngOnInit(): void {
+    this.store.dispatch(new fromStore.LoadNavigation());
+  }
 }
