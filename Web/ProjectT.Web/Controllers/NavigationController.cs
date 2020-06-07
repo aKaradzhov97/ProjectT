@@ -26,8 +26,7 @@
             data["categories"] = categories;
             data["subCategories"] = subCategories;
 
-            return this.Json(data);
-            //return this.Ok(new {Message = "Successfully loaded!", data});
+            return this.Ok(new {Message = "Successfully loaded!", data});
         }
     }
 }

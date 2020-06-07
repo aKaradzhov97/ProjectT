@@ -32,6 +32,7 @@
   <ItemGroup>
     <Folder Include="Categories\InputViewModels" />
     <Folder Include="Categories\OutputViewModels" />
+    <Folder Include="Navigations\InputViewModels" />
   </ItemGroup>
 
 </Project>
