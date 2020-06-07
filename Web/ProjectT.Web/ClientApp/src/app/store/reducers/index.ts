@@ -53,6 +53,6 @@ export class CustomSerializer
 }
 
 export const reducers = {
-  products: fromNavigation.reducer,
+  navigation: fromNavigation.reducer,
   routerReducer: fromRouter.routerReducer,
 };
