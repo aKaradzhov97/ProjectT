@@ -26,6 +26,7 @@
             string password, string role)
         {
             var user = await userManager.FindByNameAsync(userName);
+
             if (user == null)
             {
                 user = new ApplicationUser
