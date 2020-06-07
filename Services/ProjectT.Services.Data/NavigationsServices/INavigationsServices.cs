@@ -10,6 +10,6 @@
     {
         Task<IEnumerable<NavigationsOutputViewModels>> GetCategories();
 
-        Task<IEnumerable<SubCategory>> GetSubCategories();
+      //  Task<IEnumerable<NavigationSubCategoryOutputViewModels>> GetSubCategories();
     }
 }
