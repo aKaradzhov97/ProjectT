@@ -36,6 +36,7 @@ import { AppComponent } from './app.component';
 
 // Services
 import { NotificationService } from '@services/notification.service';
+import { NavigationService } from '@services/navigation.service';
 
 // Others
 import { environment } from '../environments/environment';
@@ -67,6 +68,7 @@ export const metaReducers: MetaReducer<any>[] = [];
   ],
   providers: [
     NotificationService,
+    NavigationService,
     {
       provide: RouterStateSerializer,
       useClass: CustomSerializer,

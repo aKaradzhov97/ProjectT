@@ -12,12 +12,18 @@ import { MaterialModule } from '@material/material.module';
 
 // Components
 // - Layout
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { HeaderComponent } from './containers/header/header.component';
+import { FooterComponent } from './containers/footer/footer.component';
+import { SidenavComponent } from './containers/sidenav/sidenav.component';
+import { SubNavComponent } from './components/sub-nav/sub-nav.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, SidenavComponent],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    SidenavComponent,
+    SubNavComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,

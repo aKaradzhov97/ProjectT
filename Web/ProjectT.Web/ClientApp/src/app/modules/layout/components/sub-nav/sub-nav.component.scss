@@ -1,0 +1,8 @@
+@import "./src/styles";
+
+ul {
+  a {
+    font-size: to-rem(14px);
+    transition: 0.15s;
+  }
+}
