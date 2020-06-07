@@ -1,18 +1,17 @@
-﻿using ProjectT.Web.ViewModels.Users.InputViewModels;
-using ProjectT.Web.ViewModels.Users.OutputViewModels;
-
-namespace ProjectT.Web.Controllers
+﻿namespace ProjectT.Web.Controllers
 {
     using System;
     using System.Text;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.WebUtilities;
     using ProjectT.Data.Models;
     using ProjectT.Services.Data.UserServices;
+    using ProjectT.Services.Messaging;
+    using ProjectT.Web.ViewModels.Users.InputViewModels;
+    using ProjectT.Web.ViewModels.Users.OutputViewModels;
 
     [ApiController]
     [Route("api/auth")]
@@ -117,28 +116,31 @@ namespace ProjectT.Web.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                var user = await this.userManager.FindByEmailAsync(email.ToString());
-                if (user == null || !(await this.userManager.IsEmailConfirmedAsync(user)))
+                var user = await this.userManager.FindByEmailAsync(email.Email);
+                if (user == null)
                 {
                     // Don't reveal that the user does not exist or is not confirmed
-                    return this.RedirectToPage("./ForgotPasswordConfirmation");
+                    return this.BadRequest(new {Message = "User not found!"});
                 }
 
                 var code = await this.userManager.GeneratePasswordResetTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
 
-                var callbackUrl = this.Url.Page(
-                    "api/auth/ResetPassword",
-                    pageHandler: null,
-                    values: new {area = "Identity", code},
+                var callbackUrl = this.Url.Action(
+                    "resetpassword",
+                    "users",
+                    new {code = code},
                     protocol: this.Request.Scheme);
 
-                await this.emailSender.SendEmailAsync(
-                    email.ToString(),
+                var message = new Message(new string[] {email.Email},
                     "Reset Password",
                     $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                this.emailSender.SendEmailAsync(message);
 
-                return this.RedirectToPage("./ForgotPasswordConfirmation");
+
+                //  $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
+
+                return this.Ok(new {Message = "Forgot password successful! Sending reset code!"});
             }
 
             return this.BadRequest(new {Message = "Ooopppsss! Something wrong!"});

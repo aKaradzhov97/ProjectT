@@ -1,10 +1,13 @@
-﻿namespace ProjectT.Services.Data.CategoryServices
+﻿namespace ProjectT.Services.Data.NavigationsServices
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using ProjectT.Data.Common.Repositories;
     using ProjectT.Data.Models;
+    using ProjectT.Services.Mapping;
+    using ProjectT.Web.ViewModels.Navigations.OutputViewModels;
 
     public class NavigationsServices : INavigationsServices
     {
@@ -20,14 +23,14 @@
         }
 
 
-        public async Task<ICollection<Category>> GetCategories()
+        public async Task<IEnumerable<NavigationsOutputViewModels>> GetCategories()
         {
-            var categories = await this.repositoryCategory.All().ToListAsync();
+            var categories = await this.repositoryCategory.All().To<NavigationsOutputViewModels>().ToListAsync();
 
             return categories;
         }
 
-        public async Task<ICollection<SubCategory>> GetSubCategories()
+        public async Task<IEnumerable<SubCategory>> GetSubCategories()
         {
             var subCategories = await this.repositorySubCategory.All().ToListAsync();
 
