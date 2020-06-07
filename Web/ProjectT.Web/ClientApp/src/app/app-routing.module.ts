@@ -6,6 +6,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const ROUTES: Routes = [
   {
+    path: 'cart',
+    loadChildren: () =>
+      import('./modules/cart/cart.module').then((m) => m.CartModule),
+  },
+  {
+    path: 'wishlist',
+    loadChildren: () =>
+      import('./modules/wish/wish.module').then((m) => m.WishModule),
+  },
+  {
     path: 'admin',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),

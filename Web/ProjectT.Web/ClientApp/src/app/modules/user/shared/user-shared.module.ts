@@ -7,13 +7,14 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../../material/material.module';
 
 // Components
-import { UserSidenavComponent } from './components/user-sidenav/user-sidenav.component';
+import { ShoppingBagComponent } from './components/shopping-bag/shopping-bag.component';
+import { HeadlineComponent } from './components/headline/headline.component';
 
 // - Products
 
 @NgModule({
-  declarations: [UserSidenavComponent],
+  declarations: [ShoppingBagComponent, HeadlineComponent],
   imports: [CommonModule, RouterModule, MaterialModule],
-  exports: [UserSidenavComponent],
+  exports: [ShoppingBagComponent, HeadlineComponent],
 })
 export class UserSharedModule {}

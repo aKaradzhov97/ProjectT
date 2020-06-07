@@ -1,0 +1,21 @@
+@import "../functions";
+
+.arrow-image,
+.empty-arrow-image,
+.left-arrow-image,
+.right-arrow-image {
+  width: to-rem(37px) !important;
+  height: to-rem(37px) !important;
+  background-size: to-rem(25px) !important;
+}
+
+.left-arrow-image,
+.right-arrow-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: to-rem(5px);
+}
+
+
+// JUST GENERATE NEW CHEVRONS AND THATS ALL

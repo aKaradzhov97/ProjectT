@@ -1,4 +1,4 @@
-<section class="t-container">
+<section class="grid two">
   <article>
     <ks-carousel
       [id]="1"
@@ -36,10 +36,11 @@
       >
       </app-input>
       <app-checkbox
-      [form]="form"
-      [name]="'express'"
-      [data]="deliveryData"
-      [error]="'Please confirm the delivery!'">
+        [form]="form"
+        [name]="'express'"
+        [data]="deliveryData"
+        [error]="'Please confirm the delivery!'"
+      >
       </app-checkbox>
       <section class="d-flex">
         <button
@@ -61,13 +62,5 @@
         </button>
       </section>
     </form>
-    <section>
-      <a routerLink="/edit/{{ product.id }}">Edit product</a>
-    </section>
-    <section>
-      <button mat-button mat-raised-button (click)="removeProduct()">
-        Remove product
-      </button>
-    </section>
   </article>
 </section>

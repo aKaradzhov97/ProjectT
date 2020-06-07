@@ -51,10 +51,16 @@
     <_ContentIncludedByDefault Remove="Views\Shared\_LoginPartial.cshtml" />
     <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
     <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
+    <_ContentIncludedByDefault Remove="ClientApp\e2e\tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app" />
+    <Folder Include="ClientApp\coverage" />
+    <Folder Include="ClientApp\src\app\modules\cart\containers" />
+    <Folder Include="ClientApp\src\app\modules\favorites" />
+    <Folder Include="ClientApp\src\app\modules\favorites\containers" />
+    <Folder Include="ClientApp\src\app\modules\layout\components" />
+    <Folder Include="ClientApp\src\app\modules\layout\containers" />
     <Folder Include="ClientApp\src\app\modules\user\guards" />
     <Folder Include="ClientApp\src\app\modules\user\modules\account\components" />
     <Folder Include="ClientApp\src\app\modules\user\modules\account\containers" />
@@ -64,6 +70,9 @@
     <Folder Include="ClientApp\src\app\modules\user\modules\orders\containers" />
     <Folder Include="ClientApp\src\app\modules\user\modules\vouchers\containers" />
     <Folder Include="ClientApp\src\app\modules\user\shared\components" />
+    <Folder Include="ClientApp\src\app\modules\wish\containers" />
+    <Folder Include="ClientApp\src\app\shared\components\layout" />
+    <Folder Include="ClientApp\src\app\shared\components\products" />
   </ItemGroup>
 
   <ItemGroup>

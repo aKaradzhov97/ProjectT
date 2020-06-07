@@ -1,0 +1,8 @@
+@import "./src/styles";
+
+.bag-icon-container {
+  width: to-rem(120px);
+  height: to-rem(120px);
+  border-radius: 50%;
+  border: to-rem(1px) dashed $bg-gray-light;
+}

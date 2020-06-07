@@ -1,0 +1,9 @@
+@import "./src/styles";
+
+.cta-section {
+  flex-basis: 100%;
+
+  @include media-breakpoint-md-up() {
+    flex-basis: 30rem;
+  }
+}

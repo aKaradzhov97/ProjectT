@@ -1,20 +1,4 @@
-@import './colors';
-
-.text-white {
-  color: $text-white !important;
-}
-
-.text-black {
-  color: $text-black !important;
-}
-
-.text-primary {
-  color: $text-primary !important;
-}
-
-.text-accent {
-  color: $text-accent !important;
-}
+@import "./colors";
 
 .text-dark {
   color: $text-dark !important;
@@ -26,4 +10,19 @@
 
 .text-light {
   color: $text-light !important;
+}
+
+.text-white {
+  color: $text-white !important;
+}
+
+.text-black {
+  color: $text-black !important;
+}
+.text-primary {
+  color: $text-primary !important;
+}
+
+.text-accent {
+  color: $text-accent !important;
 }

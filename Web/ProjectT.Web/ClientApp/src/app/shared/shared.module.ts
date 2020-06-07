@@ -6,35 +6,29 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../modules/material/material.module';
+import { MaterialModule } from '@material/material.module';
 
 // Pipes
 
 // Components
-// - Layout
-import { HeaderComponent } from './components/layout/header/header.component';
-import { FooterComponent } from './components/layout/footer/footer.component';
-import { SidenavComponent } from './components/layout/sidenav/sidenav.component';
+// - Forms
 import { InputComponent } from './components/forms/input/input.component';
 import { CheckboxComponent } from './components/forms/checkbox/checkbox.component';
 import { ButtonComponent } from './components/forms/button/button.component';
 import { TextareaComponent } from './components/forms/textarea/textarea.component';
 import { SelectComponent } from './components/forms/select/select.component';
 import { RadioComponent } from './components/forms/radio/radio.component';
-
-// - Products
+import { WishedCounterComponent } from './components/products/wished-counter/wished-counter.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    FooterComponent,
-    SidenavComponent,
     InputComponent,
     SelectComponent,
     CheckboxComponent,
     ButtonComponent,
     TextareaComponent,
     RadioComponent,
+    WishedCounterComponent,
   ],
   imports: [
     CommonModule,
@@ -44,12 +38,10 @@ import { RadioComponent } from './components/forms/radio/radio.component';
     ReactiveFormsModule,
   ],
   exports: [
-    HeaderComponent,
-    FooterComponent,
-    SidenavComponent,
     InputComponent,
     SelectComponent,
     CheckboxComponent,
+    WishedCounterComponent,
   ],
 })
 export class SharedModule {}

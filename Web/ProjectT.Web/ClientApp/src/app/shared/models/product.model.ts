@@ -5,7 +5,7 @@ export class Product {
   constructor(
     public id: string,
     public name: string,
-    public image: ProductImage,
+    public image: string,
     public images: ProductImage[],
     public description: string,
     public quantity: number,

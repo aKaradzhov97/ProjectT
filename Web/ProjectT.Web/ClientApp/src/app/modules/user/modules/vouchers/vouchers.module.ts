@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VouchersRoutingModule } from './vouchers-routing.module';
 import { MaterialModule } from '../../../material/material.module';
+import { UserSharedModule } from '../../shared/user-shared.module';
 
 // Guards
 
@@ -27,6 +28,7 @@ import { VouchersComponent } from './containers/vouchers/vouchers.component';
     ReactiveFormsModule,
     VouchersRoutingModule,
     MaterialModule,
+    UserSharedModule,
     // StoreModule.forFeature('auth', reducers),
     // EffectsModule.forFeature(effects),
   ],

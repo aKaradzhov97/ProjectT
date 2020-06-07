@@ -1,5 +1,5 @@
 import * as fromProducts from '../actions/products.action';
-import {Product} from '../../../../../../shared/models/product.model';
+import { Product } from '../../../../../../shared/models/product.model';
 
 export interface ProductState {
   entities: { [id: string]: Product };
@@ -13,8 +13,10 @@ export const initialState: ProductState = {
   loading: false,
 };
 
-export function reducer(state = initialState,
-                        action: fromProducts.ProductsAction): ProductState {
+export function reducer(
+  state = initialState,
+  action: fromProducts.ProductsAction
+): ProductState {
   switch (action.type) {
     case fromProducts.LOAD_PRODUCTS: {
       return {
@@ -66,12 +68,12 @@ export function reducer(state = initialState,
       const product: Product = action.payload;
       const entities = {
         ...state.entities,
-        [product.id]: product
+        [product.id]: product,
       };
 
       return {
         ...state,
-        entities
+        entities,
       };
     }
 
@@ -86,7 +88,7 @@ export function reducer(state = initialState,
 
     case fromProducts.DELETE_PRODUCT_SUCCESS: {
       const product = action.payload;
-      const {[product.id]: removed, ...entities } = state.entities;
+      const { [product.id]: removed, ...entities } = state.entities;
 
       return {
         ...state,

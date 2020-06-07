@@ -1,0 +1,28 @@
+@import "./responsive";
+@import "./functions";
+
+.grid {
+  display: grid !important;
+  grid-gap: to-rem(16px);
+  grid-template-columns: repeat(1, 1fr);
+
+  @include media-breakpoint-md-up() {
+    grid-gap: to-rem(48px);
+  }
+
+  &.two {
+    @include media-breakpoint-md-up() {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &.three {
+    @include media-breakpoint-sm-up() {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-breakpoint-md-up() {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
