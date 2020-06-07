@@ -15,14 +15,14 @@
         {
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            await SeedRoleAsync(userManager, GlobalConstants.AdministratorUsername,
+            await SeedAdminInRoleAsync(userManager, GlobalConstants.AdministratorUsername,
                 GlobalConstants.AdministratorPassword, GlobalConstants.AdministratorRoleName);
 
-            await SeedRoleAsync(userManager, GlobalConstants.UserUsername,
+            await SeedUserInRoleAsync(userManager, GlobalConstants.UserUsername,
                 GlobalConstants.UserPassword, GlobalConstants.UserRoleName);
         }
 
-        private static async Task SeedRoleAsync(UserManager<ApplicationUser> userManager, string userName,
+        private static async Task SeedAdminInRoleAsync(UserManager<ApplicationUser> userManager, string userName,
             string password, string role)
         {
             var user = await userManager.FindByNameAsync(userName);
@@ -33,6 +33,30 @@
                     UserName = userName,
                     Email = "admin@admin.com",
                     PhoneNumber = "08888888888",
+                    CreatedOn = DateTime.UtcNow,
+                };
+
+                var newUser = await userManager.CreateAsync(user, password);
+                var userRole = await userManager.AddToRoleAsync(user, role);
+
+                if (!newUser.Succeeded)
+                {
+                    throw new Exception(string.Join(Environment.NewLine, newUser.Errors.Select(e => e.Description)));
+                }
+            }
+        }
+
+        private static async Task SeedUserInRoleAsync(UserManager<ApplicationUser> userManager, string userName,
+            string password, string role)
+        {
+            var user = await userManager.FindByNameAsync(userName);
+            if (user == null)
+            {
+                user = new ApplicationUser
+                {
+                    UserName = userName,
+                    Email = "admina@admina.com",
+                    PhoneNumber = "0888999999",
                     CreatedOn = DateTime.UtcNow,
                 };
 
