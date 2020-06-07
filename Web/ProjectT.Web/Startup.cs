@@ -1,11 +1,9 @@
-using CloudinaryDotNet;
-using ProjectT.Services.Data.ProductServices;
-
 namespace ProjectT
 {
     using System;
     using System.Reflection;
 
+    using CloudinaryDotNet;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -20,8 +18,11 @@ namespace ProjectT
     using ProjectT.Data.Repositories;
     using ProjectT.Data.Seeding;
     using ProjectT.Services.Data.HomeServices;
+    using ProjectT.Services.Data.NavigationsServices;
+    using ProjectT.Services.Data.ProductServices;
     using ProjectT.Services.Data.UserServices;
     using ProjectT.Services.Mapping;
+    using ProjectT.Services.Messaging;
     using ProjectT.Web.ViewModels;
 
     public class Startup
@@ -50,6 +51,12 @@ namespace ProjectT
                 options.ExpireTimeSpan = TimeSpan.FromDays(1);
             });
 
+            // Settings for Email Sender
+            var emailConfig = configuration
+                .GetSection("EmailConfiguration")
+                .Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
+
             services.AddControllers();
 
             services.AddSingleton(this.configuration);
@@ -66,6 +73,10 @@ namespace ProjectT
             services.AddTransient<IHomeServices, HomeServices>();
             services.AddTransient<IUsersServices, UsersServices>();
             services.AddTransient<IProductsServices, ProductsServices>();
+            services.AddTransient<INavigationsServices, NavigationsServices>();
+
+            // Email Service
+            services.AddTransient<IEmailSender, EmailSender>();
 
             // Add Cloudinary Setups
             Account account = new Account

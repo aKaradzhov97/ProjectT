@@ -4,11 +4,11 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
-    using ProjectT.Services.Data.CategoryServices;
+    using ProjectT.Services.Data.NavigationsServices;
 
     [ApiController]
     [Route("api/navigation")]
-    public class NavigationController : ControllerBase
+    public class NavigationController : Controller
     {
         private readonly INavigationsServices navigationsServices;
 
@@ -26,7 +26,8 @@
             data["categories"] = categories;
             data["subCategories"] = subCategories;
 
-            return this.Ok(new {Message = "Successfully loaded!", data});
+            return this.Json(data);
+            //return this.Ok(new {Message = "Successfully loaded!", data});
         }
     }
 }
