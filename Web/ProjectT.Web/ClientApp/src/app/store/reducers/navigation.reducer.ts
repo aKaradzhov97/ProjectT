@@ -28,6 +28,7 @@ export function reducer(
 
     case fromNavigation.LOAD_NAVIGATION_SUCCESS: {
       const categories: Category[] = action.payload.data;
+
       const entities = categories.reduce(
         (entities: { [id: string]: Category }, category: Category) => {
           return {

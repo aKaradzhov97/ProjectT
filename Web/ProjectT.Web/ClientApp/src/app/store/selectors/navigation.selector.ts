@@ -5,13 +5,13 @@ import * as fromFeature from '../reducers';
 import * as fromNavigation from '../reducers/navigation.reducer';
 
 // Selectors
-export const getNavigationState = createSelector(
+export const getNavigationStateSelector = createSelector(
   fromFeature.getNavigationState,
-  (state: fromFeature.NavigationState) => state.navigation,
+  (state: fromFeature.NavigationState) => state.navigation
 );
 
 export const getNavigationEntities = createSelector(
-  getNavigationState,
+  getNavigationStateSelector,
   fromNavigation.getNavigationEntities
 );
 
@@ -23,10 +23,10 @@ export const getNavigation = createSelector(
 );
 
 export const getNavigationLoaded = createSelector(
-  getNavigationState,
+  getNavigationStateSelector,
   fromNavigation.getNavigationLoaded
 );
 export const getNavigationLoading = createSelector(
-  getNavigationState,
+  getNavigationStateSelector,
   fromNavigation.getNavigationLoading
 );
