@@ -2,17 +2,16 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
     using Microsoft.EntityFrameworkCore;
     using ProjectT.Data.Common.Repositories;
     using ProjectT.Data.Models;
 
-    public class CategoriesServices : ICategoriesServices
+    public class NavigationsServices : INavigationsServices
     {
         private readonly IRepository<Category> repositoryCategory;
         private readonly IRepository<SubCategory> repositorySubCategory;
 
-        public CategoriesServices(
+        public NavigationsServices(
             IRepository<Category> repositoryCategory,
             IRepository<SubCategory> repositorySubCategory)
         {
