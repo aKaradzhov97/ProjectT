@@ -5,7 +5,7 @@
 
     using ProjectT.Data.Models;
 
-    public interface ICategoriesServices
+    public interface INavigationsServices
     {
         Task<ICollection<Category>> GetCategories();
 
