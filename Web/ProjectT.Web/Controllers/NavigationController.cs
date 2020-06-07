@@ -19,12 +19,7 @@
 
         public async Task<ActionResult> MainCategory()
         {
-            var categories = await this.navigationsServices.GetCategories();
-            var subCategories = await this.navigationsServices.GetSubCategories();
-
-            var data = new Dictionary<string, IEnumerable>();
-            data["categories"] = categories;
-            data["subCategories"] = subCategories;
+            var data = await this.navigationsServices.GetCategories();
 
             return this.Ok(new {Message = "Successfully loaded!", data});
         }

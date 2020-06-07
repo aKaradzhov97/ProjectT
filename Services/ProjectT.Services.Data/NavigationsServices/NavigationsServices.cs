@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
     using Microsoft.EntityFrameworkCore;
     using ProjectT.Data.Common.Repositories;
     using ProjectT.Data.Models;
@@ -30,11 +29,11 @@
             return categories;
         }
 
-        public async Task<IEnumerable<SubCategory>> GetSubCategories()
-        {
-            var subCategories = await this.repositorySubCategory.All().ToListAsync();
+        //  public async Task<IEnumerable<NavigationSubCategoryOutputViewModels>> GetSubCategories()
+        //  {
+        //      var subCategories = await this.repositorySubCategory.All().To<NavigationSubCategoryOutputViewModels>().ToListAsync();
 
-            return subCategories;
-        }
+        //      return subCategories;
+        //  }
     }
 }
